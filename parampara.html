@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Guru Parampara — Balagaru Mutt</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <h1 class="mutt-name">Balagaru Mutt</h1>
+          <p class="mutt-loc">Teerthahalli</p>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html" class="nav-item">Home</a>
+          <a href="about.html" class="nav-item">About</a>
+          <a href="parampara.html" class="nav-item">Parampara</a>
+          <a href="news.html" class="nav-item">News</a>
+          <a href="gallery.html" class="nav-item">Gallery</a>
+          <a href="contact.html" class="nav-item">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container content">
+      <h2>Guru Parampara</h2>
+      <p>The Mutt honours the following Acharyas in succession. The list below is presented with reverence. The current Peetadhipati is highlighted.</p>
+
+      <ol class="parampara-list">
+        <li>
+          <strong>Srimat Venkatesha Bharati Swami</strong>
+          <div class="muted">Founder — established the line</div>
+        </li>
+        <li>
+          <strong>Srimat Ramachandra Tirtha</strong>
+          <div class="muted">Preserved the practice of Vedic teaching</div>
+        </li>
+        <li class="current">
+          <strong>Srimat Balagaru Peetadhipati</strong>
+          <div class="muted">Current Peetadhipati — guiding the Mutt today</div>
+        </li>
+        <li>
+          <strong>Srimat Vishveshwara Saraswati</strong>
+          <div class="muted">Senior Acharya — teacher and scholar</div>
+        </li>
+      </ol>
+
+      <p class="small-muted">Note: Names and titles are shown in a simple, respectful style. Update this page as the lineage grows.</p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
