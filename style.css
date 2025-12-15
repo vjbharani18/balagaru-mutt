@@ -21,6 +21,86 @@
 html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: var(--bg); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 .container { max-width: var(--max-width); margin: 0 auto; padding: 1.25rem; }
 
+/* ---------------------------------------------------------------------------
+   Full-width hero-image (new)
+   - Uses images/hero.png as background
+   - Full-width, ~85vh height, responsive
+   - Contains a dark semi-transparent overlay with white, serif text
+   - Overlay is positioned center-left on wide screens and centered on small screens
+   --------------------------------------------------------------------------- */
+.hero-image {
+  /* Background image for the full-width hero */
+  background-image: url("images/hero.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Make the hero occupy most of the viewport height (dignified presence) */
+  height: 85vh;
+  width: 100%;
+  position: relative;
+
+  /* Ensure the hero sits visually apart from the page content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overlay box for text (ensures legibility over the image).
+   Uses a dark translucent background and white serif text for a traditional look. */
+.hero-overlay {
+  /* A gentle dark overlay behind the text for legibility */
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+
+  /* Typography */
+  font-family: var(--serif);
+  line-height: 1.2;
+
+  /* Positioning: center-left on large screens to match dignified layouts */
+  position: absolute;
+  left: 6%;
+  bottom: 18%;
+  max-width: 720px;
+
+  /* Spacing and visual shape */
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+
+  /* Slight text shadow helps against complex backgrounds */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Hero text elements */
+.hero-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 2.25rem;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.hero-subtitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: 400;
+}
+
+.hero-tagline {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0.95;
+  font-style: normal;
+}
+
+/* Smaller variant used by existing small hero section below */
+.hero .hero-title.small { font-size: 1.25rem; color: var(--accent); }
+
+/* ---------------------------------------------------------------------------
+   End hero-image styles
+   --------------------------------------------------------------------------- */
+
 /* Header */
 .site-header { background: linear-gradient(180deg, rgba(232,136,47,0.06), transparent); border-bottom: 1px solid rgba(0,0,0,0.03); }
 .header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
@@ -32,7 +112,7 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 .site-nav .nav-item { color:var(--text); text-decoration:none; padding:0.5rem 0.6rem; border-radius:4px; font-size:0.95rem; }
 .site-nav .nav-item:hover { background: rgba(0,0,0,0.03); color:var(--accent); }
 
-/* Hero */
+/* Hero (existing small hero) */
 .hero { padding:2.25rem 1.25rem; text-align:center; }
 .hero-title { margin:0 0 0.5rem 0; font-size:1.5rem; color:var(--accent); }
 .hero-text { margin:0; color:var(--muted); }
@@ -90,4 +170,20 @@ a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
   .site-nav { width:100%; justify-content:space-between; }
   .brand .mutt-name { font-size:1.05rem; }
   .container { padding:0.75rem; }
+
+  /* Make the hero overlay centered and full-width friendly on small screens */
+  .hero-overlay {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8%;
+    width: calc(100% - 2rem);
+    max-width: none;
+    padding: 0.9rem 1rem;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .hero-title { font-size: 1.6rem; }
+  .hero-subtitle { font-size: 1.05rem; }
+  .hero-tagline { font-size: 0.95rem; }
 }
