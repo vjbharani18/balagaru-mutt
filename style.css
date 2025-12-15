@@ -2,7 +2,7 @@
    - Traditional, minimal, serif typography
    - Saffron / beige palette
    - Responsive layout without frameworks
-   - Updated for improved mobile responsiveness (tap targets, fluid type, nav wrapping)
+   - Updated to ensure hero image adjusts gracefully on mobile devices
 */
 
 /* Base colors */
@@ -37,24 +37,29 @@ p { margin: 0 0 0.75rem 0; }
    - Full-width, ~85vh height, responsive with a cap
    - Contains a dark semi-transparent overlay with white, serif text
    - Overlay is positioned center-left on wide screens and centered on small screens
+   - New: adjustments to background-position and background-size for mobile to preserve focal subject
    --------------------------------------------------------------------------- */
 .hero-image {
   /* Background image for the full-width hero */
   background-image: url("images/hero.png");
-  background-size: cover;
-  background-position: center;
+  background-size: cover;           /* cover ensures the image fills the area, may crop */
+  background-position: center center; /* default focal point */
   background-repeat: no-repeat;
+
+  /* Prevent 'fixed' parallax behavior which can be problematic on mobile browsers */
+  background-attachment: scroll;
 
   /* Make the hero occupy most of the viewport height (dignified presence).
      Use clamp to remain reasonable on very tall or very short devices. */
   height: 85vh;
   height: clamp(48vh, 85vh, 88vh); /* responsive fallback */
-  min-height: 380px;               /* ensure enough vertical room on very small viewports */
+  min-height: 360px;               /* ensure enough vertical room on very small viewports */
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 /* Overlay box for text (ensures legibility over the image).
@@ -112,6 +117,68 @@ p { margin: 0 0 0.75rem 0; }
 .hero .hero-title.small { font-size: 1.25rem; color: var(--accent); }
 
 /* ---------------------------------------------------------------------------
+   Mobile-specific hero adjustments:
+   - Re-center or shift the background focal point so important parts of image remain visible
+   - Slightly increase background-size on very narrow screens to allow graceful cropping
+   - Ensure overlay remains legible and well-placed
+   --------------------------------------------------------------------------- */
+
+/* Medium-small screens: nudge the focal point slightly upward so faces/temple tops appear */
+@media (max-width: 900px) {
+  .hero-image {
+    /* Move focal point slightly up to show upper subject when height is reduced */
+    background-position: center 35%;
+    /* On medium screens, ensure the image still covers the area */
+    background-size: cover;
+  }
+}
+
+/* Typical phones: center and increase background-size to preserve subject visibility */
+@media (max-width: 699px) {
+  .hero-image {
+    /* On phones prefer a slightly higher crop to keep subject visible */
+    background-position: center 30%;
+    /* Make background a bit larger so important subject remains visible after cropping */
+    background-size: 120%;
+    /* Reduce min-height to better fit shorter screens while keeping presence */
+    min-height: 300px;
+    height: 62vh;
+  }
+
+  .hero-overlay {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8%;
+    width: calc(100% - 2rem);
+    max-width: none;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+}
+
+/* Very narrow / tall phones: fine tune cropping and overlay */
+@media (max-width: 420px) {
+  .hero-image {
+    /* On very narrow displays we prioritize center-top so logo/text above image may remain visible */
+    background-position: center 25%;
+    background-size: 140%;
+    min-height: 280px;
+    height: 58vh;
+  }
+
+  .hero-overlay {
+    bottom: 6%;
+    padding: 0.7rem 0.85rem;
+    border-radius: 6px;
+  }
+
+  .hero-title { font-size: 1.35rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+  .hero-tagline { font-size: 0.9rem; }
+}
+
+/* ---------------------------------------------------------------------------
    Navigation & header improvements for mobile
    - Allow nav to wrap / scroll horizontally on small screens
    - Increase tap target sizes for accessibility and mobile friendliness
@@ -136,7 +203,6 @@ p { margin: 0 0 0.75rem 0; }
   align-items:center;
   flex-wrap:wrap;
   margin-left: auto;
-  /* On very narrow screens allow horizontal scrolling */
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 0.25rem;
@@ -159,7 +225,6 @@ p { margin: 0 0 0.75rem 0; }
   background: rgba(0,0,0,0.03);
   color:var(--accent);
   outline: none;
-  box-shadow: none;
 }
 
 /* Ensure nav scrollbar is hidden but still usable on desktop */
@@ -213,9 +278,7 @@ a { color:var(--accent); }
 a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
 
 /* ---------------------------------------------------------------------------
-   Responsive breakpoints
-   - Adjust spacing, fonts and layout for smaller devices
-   - Ensure the hero overlay is centered and legible on mobile screens
+   Responsive breakpoints (other adjustments kept)
    --------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .container { padding: var(--container-pad-sm); }
@@ -224,11 +287,8 @@ a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
 }
 
 @media (max-width: 699px) {
-  /* Stack header content vertically and keep nav easily reachable */
   .header-inner { flex-direction:column; align-items:flex-start; gap:0.5rem; }
   .site-nav { width:100%; justify-content:flex-start; gap:0.6rem; padding-top: 0.25rem; padding-bottom: 0.25rem; }
-
-  /* Make the hero overlay centered and full-width friendly on small screens */
   .hero-overlay {
     left: 50%;
     transform: translateX(-50%);
@@ -239,22 +299,15 @@ a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
     border-radius: 8px;
     text-align: center;
   }
-
-  /* Slight adjustments for hero text on small screens */
   .hero-title { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
   .hero-subtitle { font-size: clamp(1rem, 4.2vw, 1.05rem); }
   .hero-tagline { font-size: clamp(0.95rem, 3.2vw, 0.95rem); }
-
-  /* Ensure nav items are comfortable to tap on narrow devices */
   .site-nav .nav-item { padding: 0.6rem 0.9rem; font-size: 1rem; }
-
-  /* News cards: keep stacked layout for readability */
   .news-cards { flex-direction: column; }
 }
 
-/* Very small devices (phones with narrow width) */
 @media (max-width: 420px) {
-  .hero-image { min-height: 320px; }
+  .hero-image { min-height: 280px; }
   .hero-overlay { bottom: 6%; padding: 0.7rem 0.85rem; border-radius: 6px; }
   .hero-title { font-size: 1.35rem; }
   .hero-subtitle { font-size: 0.98rem; }
