@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>News & Events — Balagaru Mutt</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <h1 class="mutt-name">Balagaru Mutt</h1>
+          <p class="mutt-loc">Teerthahalli</p>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html" class="nav-item">Home</a>
+          <a href="about.html" class="nav-item">About</a>
+          <a href="parampara.html" class="nav-item">Parampara</a>
+          <a href="news.html" class="nav-item">News</a>
+          <a href="gallery.html" class="nav-item">Gallery</a>
+          <a href="contact.html" class="nav-item">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container content">
+      <h2>News & Events</h2>
+
+      <div id="news-container">
+        <p class="muted">Loading news…</p>
+      </div>
+
+      <hr/>
+
+      <!-- Article view area for selected article -->
+      <article id="article-view" class="article-view" hidden>
+        <a id="back-to-list" href="news.html">&larr; Back to list</a>
+        <h3 id="article-title"></h3>
+        <div id="article-date" class="news-date"></div>
+        <div id="article-body" class="article-body"></div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- We use a small, well-known markdown renderer via CDN for clarity -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple helper to format date
+    function formatDate(d) {
+      try {
+        return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch (e) { return d; }
+    }
+
+    // Load list index and render list
+    function loadNewsList() {
+      fetch('/content/news/index.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error('No news index');
+          return r.json();
+        })
+        .then(function (data) {
+          if (!Array.isArray(data) || data.length === 0) {
+            document.getElementById('news-container').innerHTML = '<p class="muted">No news available.</p>';
+            return;
+          }
+          data.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+          var container = document.getElementById('news-container');
+          container.innerHTML = '';
+          data.forEach(function (item) {
+            var article = document.createElement('article');
+            article.className = 'news-list-item';
+            var title = document.createElement('h4');
+            var link = document.createElement('a');
+            link.href = 'news.html?file=' + encodeURIComponent(item.file);
+            link.textContent = item.title;
+            title.appendChild(link);
+            var date = document.createElement('div');
+            date.className = 'news-date';
+            date.textContent = formatDate(item.date);
+            var excerpt = document.createElement('p');
+            excerpt.textContent = item.excerpt || '';
+            article.appendChild(title);
+            article.appendChild(date);
+            article.appendChild(excerpt);
+            container.appendChild(article);
+          });
+        })
+        .catch(function () {
+          document.getElementById('news-container').innerHTML = '<p class="muted">No news index found. Use the admin at /admin to add news.</p>';
+        });
+    }
+
+    // Load full markdown file and render
+    function loadArticle(file) {
+      var articleView = document.getElementById('article-view');
+      var container = document.getElementById('article-body');
+      fetch('/content/news/' + file)
+        .then(function (r) {
+          if (!r.ok) throw new Error('Article not found');
+          return r.text();
+        })
+        .then(function (txt) {
+          // Attempt to strip frontmatter (--- YAML ---) and parse it
+          var body = txt;
+          var front = {};
+          if (txt.startsWith('---')) {
+            var end = txt.indexOf('---', 3);
+            if (end !== -1) {
+              var fm = txt.substring(3, end).trim();
+              body = txt.substring(end + 3).trim();
+              // Very small YAML parser for known fields (title/date)
+              fm.split('\n').forEach(function (line) {
+                var idx = line.indexOf(':');
+                if (idx > -1) {
+                  var k = line.substring(0, idx).trim();
+                  var v = line.substring(idx + 1).trim();
+                  // remove surrounding quotes if any
+                  v = v.replace(/^["']|["']$/g, '');
+                  front[k] = v;
+                }
+              });
+            }
+          }
+          // Show header from frontmatter if present
+          var title = front.title || 'Article';
+          var date = front.date || '';
+          document.getElementById('article-title').textContent = title;
+          document.getElementById('article-date').textContent = date ? new Date(date).toLocaleDateString() : '';
+          // Render markdown body to HTML using marked
+          container.innerHTML = marked.parse(body);
+          document.getElementById('news-container').hidden = true;
+          articleView.hidden = false;
+          // Scroll to article
+          articleView.scrollIntoView({ behavior: 'smooth' });
+        })
+        .catch(function () {
+          alert('Unable to load the article.');
+          window.location.href = 'news.html';
+        });
+    }
+
+    // On page load: if query ?file=..., show article; otherwise list
+    (function init() {
+      var params = new URLSearchParams(window.location.search);
+      var file = params.get('file');
+      if (file) {
+        loadArticle(file);
+      } else {
+        loadNewsList();
+      }
+      // Back to list link handler
+      var back = document.getElementById('back-to-list');
+      if (back) {
+        back.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.getElementById('article-view').hidden = true;
+          document.getElementById('news-container').hidden = false;
+          history.replaceState(null, '', 'news.html');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
