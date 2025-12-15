@@ -3,24 +3,45 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sri Arya Akshobya Moola Samsthana Balagaru</title>
+  <title>Sri Arya Akshobya teertha moola Samsthanam Balagaru — Teerthahalli</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Light SEO -->
-  <meta name="description" content="Balagaru Mutt, Teerthahalli — traditional Vedic Mutt preserving Parampara, seva and upadesha." />
+  <meta name="description" content="Sri Arya Akshobya teertha moola Samsthanam Balagaru — traditional Vedic Samsthanam preserving Parampara, seva and upadesha by the Tungabhadra river." />
 </head>
 <body>
   <!--
-    Full-width hero-image section (added as requested).
-    Placed at the very top of <body> so it appears before the site header.
-    Uses images/hero.png as background and an overlay for legible text.
+    Full-width hero-image section.
+
+    Updated to incorporate a nature / Tungabhadra-inspired design:
+    - Uses images/hero.png as background (kept)
+    - Dark translucent overlay for legibility
+    - Added a decorative SVG 'wave' at the bottom to evoke the river
+    - Text updated to the site name (kept per previous change)
+
+    No Javascript. All layout and visual enhancements are CSS + SVG.
   -->
-  <section class="hero-image" role="banner" aria-label="Balagaru Mutt hero">
-    <!-- Overlay containing title, subtitle, and tagline (no JS; pure HTML/CSS) -->
-    <div class="hero-overlay">
-      <h1 class="hero-title">Sri Arya Akshobya Moola Samsthana, Balagaru</h1>
+  <section class="hero-image" role="banner" aria-label="Sri Arya Akshobya teertha moola Samsthanam hero">
+    <!-- Overlay containing title, subtitle, and tagline -->
+    <div class="hero-overlay" aria-hidden="false">
+      <h1 class="hero-title">Sri Arya Akshobya teertha moola Samsthanam Balagaru</h1>
       <h2 class="hero-subtitle">Teerthahalli</h2>
       <p class="hero-tagline">Preserving Dharma • Sampradaya • Seva</p>
     </div>
+
+    <!-- Decorative SVG wave to suggest the Tungabhadra river flowing at the base of the hero.
+         The SVG is purely decorative (aria-hidden) and sized to be responsive. -->
+    <svg class="hero-wave" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(31,111,139,0.95)"/>
+          <stop offset="100%" stop-color="rgba(37,143,166,0.95)"/>
+        </linearGradient>
+      </defs>
+      <!-- A soft wave path; because the hero has a dark overlay, the wave uses river-blue colors -->
+      <path d="M0,40 C150,120 350,0 600,40 C850,80 1050,20 1200,60 L1200,120 L0,120 Z" fill="url(#g1)"></path>
+      <!-- subtle lighter overlay to add depth -->
+      <path d="M0,60 C150,110 350,20 600,60 C850,100 1050,40 1200,80 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.03)"></path>
+    </svg>
   </section>
 
   <!-- Site wrapper -->
@@ -30,7 +51,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <h1 class="mutt-name">Balagaru Mutt</h1>
+          <h1 class="mutt-name">Sri Arya Akshobya teertha moola Samsthanam Balagaru</h1>
           <p class="mutt-loc">Teerthahalli, Karnataka</p>
         </div>
 
@@ -46,19 +67,19 @@
       </div>
     </header>
 
-    <!-- Hero (existing small hero kept per instructions: do NOT remove) -->
+    <!-- Existing small hero retained per original structure -->
     <main>
       <section class="hero">
         <div class="container">
           <h2 class="hero-title small">A seat of learning, devotion and service</h2>
-          <p class="hero-text">Balagaru Mutt in Teerthahalli is dedicated to preserving the Guru–Shishya tradition and serving the local community with Vedic teaching and social service.</p>
+          <p class="hero-text">Sri Arya Akshobya teertha moola Samsthanam Balagaru in Teerthahalli is dedicated to preserving the Guru–Shishya tradition and serving the local community with Vedic teaching and social service.</p>
         </div>
       </section>
 
       <!-- About summary -->
       <section class="summary container">
-        <h3>About the Mutt</h3>
-        <p>Balagaru Mutt follows a time-honoured tradition of spiritual teaching and community service. We offer Vedic study, upadesha (spiritual instruction) and organise periodic yagnas and seva programmes.</p>
+        <h3>About the Samsthanam</h3>
+        <p>Sri Arya Akshobya teertha moola Samsthanam Balagaru follows a time‑honoured tradition of spiritual teaching and community service. We offer Vedic study, upadesha (spiritual instruction) and organise periodic yagnas and seva programmes.</p>
         <p><a href="about.html" class="read-more">Read more →</a></p>
       </section>
 
@@ -84,8 +105,8 @@
     <!-- Footer -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli. All rights reserved.</p>
-        <p class="small-muted">Designed for simplicity and respectful presentation. Admin: <a href="admin/index.html">CMS</a></p>
+        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru. All rights reserved.</p>
+        <p class="small-muted">Designed with a nature- and river-inspired palette. Admin: <a href="admin/index.html">CMS</a></p>
       </div>
     </footer>
   </div>
