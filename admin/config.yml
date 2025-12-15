@@ -1,0 +1,43 @@
+# Netlify CMS configuration for Balagaru Mutt
+# Uses git-gateway and Netlify Identity for authentication.
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"   # Where uploaded files are stored in the repo
+public_folder: "/images/uploads" # Path used in the published site
+
+# Optional: customize the logo shown in the Netlify CMS UI
+site_logo: "/images/uploads/logo-placeholder.png"
+
+collections:
+  - name: "news"                # Used by the UI
+    label: "News & Events"
+    folder: "content/news"      # All news are saved as markdown files in this folder
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "yyyy-MM-dd" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Optional: a simple file entry to manage the index manifest used by the static site JS.
+  # Editing this file keeps /content/news/index.json in sync with news files.
+  - label: "News Index (manifest)"
+    name: "news_index"
+    files:
+      - file: "content/news/index.json"
+        label: "News Index"
+        name: "index"
+        fields:
+          - { label: "News manifest", name: "news", widget: "markdown" }
+# Note:
+# The above files-collection gives a basic editor for index.json. You may prefer to
+# maintain index.json manually or generate it from a build step. The simplest approach
+# for immediate deployable site is:
+# - Use the 'news' collection to create .md files in content/news
+# - Update content/news/index.json manually (or via the News Index editor) to add new entries,
+#   each entry should include: { "file": "news-xxx.md", "title": "...", "date": "YYYY-MM-DD", "excerpt": "..." }
