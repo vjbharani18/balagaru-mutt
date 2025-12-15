@@ -1,41 +1,78 @@
-/* Common styles for Sri Arya Akshobya teertha moola Samsthanam Balagaru
-   - Traditional, minimal, serif typography
-   - Nature + Tungabhadra-inspired palette (river blues & foliage greens)
-   - Responsive layout without frameworks
-   - Decorative SVG wave included in the hero to suggest the river
+/* Updated stylesheet (key changes)
+   - Shorter hero title, full name only in header
+   - CSS-only hamburger menu for mobile (checkbox + label)
+   - Hero alignment fixes for mobile (background-position adjustments)
+   - Removed river/overlay SVG so nothing blocks content
+   - Visual cues inspired by Siddhagiri and other Indian mutt sites:
+     saffron strip, serif headings, card layout, warm parchment background
 */
 
-/* Palette: balanced between saffron (traditional) and river/foliage tones */
+/* Palette and typography */
 :root{
-  --bg: #fbf7f2;          /* warm, light parchment */
-  --accent: #d97729;      /* saffron accent (kept for tradition) */
-  --river-start: #1f6f8b; /* deep river blue */
-  --river-end: #25a1a6;   /* lighter river teal */
-  --foliage: #2f6b2f;     /* deep green for headings/accents */
-  --text: #1e2a24;        /* near-black with warm tone */
+  --bg: #fbf7f2;
+  --accent: #d97729;
+  --foliage: #2f6b2f;
+  --river: #1f6f8b;
+  --text: #1e2a24;
   --muted: #6b5a45;
   --card: #ffffff;
   --max-width: 1100px;
   --container-pad: 1.25rem;
-  --container-pad-sm: 0.9rem;
   --serif: Georgia, "Times New Roman", Times, serif;
+  --sans: "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Reset and base */
+/* Reset */
 * { box-sizing: border-box; }
-html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: linear-gradient(180deg, var(--bg), #eef7f5); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; -webkit-text-size-adjust:100%; }
+html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: linear-gradient(180deg, var(--bg), #eef7f5); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 .container { max-width: var(--max-width); margin: 0 auto; padding: var(--container-pad); }
 
-/* Typography helpers */
-h1,h2,h3,h4 { margin:0 0 0.5rem 0; line-height:1.15; }
-p { margin:0 0 0.9rem 0; color: var(--muted); }
+/* small saffron strip */
+.top-strip { height:6px; background: linear-gradient(90deg, var(--accent), #c86020); width:100%; }
 
-/* ---------------------------------------------------------------------------
-   Full-width hero-image
-   - Background: images/hero.png (kept)
-   - Dark overlay for text,
-   - Decorative river wave at the base (SVG)
-   --------------------------------------------------------------------------- */
+/* Header */
+.site-header { background: rgba(255,255,255,0.94); border-bottom: 1px solid rgba(0,0,0,0.04); position: sticky; top:0; z-index:50; backdrop-filter: blur(2px); }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+
+/* Brand block */
+.brand { display:flex; gap:0.9rem; align-items:center; }
+.crest { width:56px; height:56px; border-radius:8px; background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(0,0,0,0.06)); border:2px solid rgba(0,0,0,0.04); box-shadow: 0 6px 14px rgba(0,0,0,0.06); background-image: linear-gradient(90deg, rgba(217,119,41,0.95), rgba(236,160,80,0.85)); background-blend-mode:multiply; }
+.brand-line { font-size:0.85rem; color:var(--foliage); font-weight:700; }
+.brand-name { font-size:1rem; color:var(--text); font-weight:600; }
+.mutt-loc { font-size:0.82rem; color:var(--muted); }
+
+/* ---------------------------
+   CSS-only hamburger navigation
+   - .nav-toggle is hidden visually but accessible
+   - when checked, the .site-nav is shown on small screens
+   --------------------------- */
+.nav-toggle { display:none; }
+
+/* Hamburger label (visible on small screens) */
+.nav-toggle-label {
+  display:none;
+  width:44px;
+  height:44px;
+  border-radius:8px;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.nav-toggle-label .hamburger { display:block; width:18px; height:2px; background:var(--text); position:relative; }
+.nav-toggle-label .hamburger::before,
+.nav-toggle-label .hamburger::after { content:""; position:absolute; left:0; right:0; height:2px; background:var(--text); }
+.nav-toggle-label .hamburger::before { top:-6px; }
+.nav-toggle-label .hamburger::after { bottom:-6px; }
+
+/* Navigation default (desktop) */
+.site-nav { display:flex; gap:0.65rem; align-items:center; flex-wrap:wrap; margin-left:auto; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:0.25rem; }
+.site-nav .nav-item { color:var(--text); text-decoration:none; padding:0.5rem 0.85rem; border-radius:6px; font-size:0.94rem; white-space:nowrap; transition:all 150ms ease; }
+.site-nav .nav-item:hover, .site-nav .nav-item:focus { background: rgba(47,107,47,0.06); color:var(--foliage); }
+.site-nav .nav-item.admin { border: 1px solid rgba(0,0,0,0.06); background: rgba(217,119,41,0.06); color:var(--accent); }
+
+/* HERO */
 .hero-image {
   background-image: url("images/hero.png");
   background-size: cover;
@@ -47,181 +84,105 @@ p { margin:0 0 0.9rem 0; color: var(--muted); }
   width: 100%;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   overflow: hidden;
+  padding-left: 6%;
+  padding-right: 6%;
 }
 
-/* Overlay box for text (enhanced to match river/foliage theme) */
 .hero-overlay {
-  /* slightly cooler overlay to blend with river palette */
-  background: linear-gradient(180deg, rgba(8,36,49,0.48), rgba(10,56,68,0.42));
-  color: #ffffff;
+  background: rgba(8,36,49,0.48);
+  color: #fff;
   font-family: var(--serif);
   line-height: 1.2;
-  position: absolute;
-  left: 6%;
-  bottom: 18%;
   max-width: 760px;
-  padding: clamp(0.9rem, 2.6vw, 1.6rem);
+  margin-bottom: 6%;
+  padding: 1.2rem 1.5rem;
   border-radius: 10px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-  box-shadow: 0 8px 24px rgba(12,40,50,0.25);
-  border-left: 4px solid rgba(255,255,255,0.06); /* subtle decorative stripe */
+  border-left: 4px solid rgba(217,119,41,0.18);
+  box-shadow: 0 10px 30px rgba(8,36,49,0.28);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
-/* Hero text with dignified typography */
-.hero-title {
-  margin: 0 0 0.25rem 0;
-  font-size: clamp(1.6rem, 5vw, 2.6rem);
-  letter-spacing: 0.02em;
-  font-weight: 600;
-  color: #fff;
-}
+.hero-title { margin:0 0 0.25rem 0; font-size: clamp(1.6rem, 5vw, 2.6rem); letter-spacing:0.01em; color:#fff; font-weight:700; }
+.hero-subtitle { margin:0 0 0.5rem 0; font-size: clamp(1.05rem,3vw,1.3rem); color: rgba(255,255,255,0.94); font-weight:500; }
+.hero-tagline { margin:0; font-size: clamp(0.95rem,2.4vw,1rem); color: rgba(255,255,255,0.95); }
 
-.hero-subtitle {
-  margin: 0 0 0.5rem 0;
-  font-size: clamp(1.05rem, 3vw, 1.3rem);
-  color: rgba(255,255,255,0.95);
-  font-weight: 500;
-}
+/* Intro + cards */
+.intro { margin-top: 1.25rem; margin-bottom: 1.25rem; }
+.intro-grid { display:grid; grid-template-columns: 1fr 320px; gap:1rem; align-items:start; }
+.card { background: var(--card); padding: 1rem; border-radius:10px; box-shadow: 0 8px 20px rgba(20,40,30,0.04); border: 1px solid rgba(0,0,0,0.04); }
+.intro-text h2 { color: var(--foliage); margin-bottom:0.35rem; }
+.intro-quick h3 { color: var(--river); margin-bottom:0.35rem; }
+.intro-quick ul { margin:0; padding-left:1rem; color:var(--muted); }
 
-.hero-tagline {
-  margin: 0;
-  font-size: clamp(0.95rem, 2.4vw, 1rem);
-  color: rgba(255,255,255,0.95);
-  opacity: 0.96;
-}
-
-/* Decorative SVG wave styling */
-.hero-wave {
-  position: absolute;
-  left: 0;
-  bottom: -1px; /* overlap a hair to hide seam */
-  width: 100%;
-  height: 110px;
-  display: block;
-  pointer-events: none;
-  z-index: 2;
-  filter: drop-shadow(0 -6px 18px rgba(0,0,0,0.12));
-}
-
-/* ---------------------------------------------------------------------------
-   Header and navigation tuned to nature palette
-   --------------------------------------------------------------------------- */
-.site-header {
-  background: linear-gradient(180deg, rgba(239,249,247,0.9), transparent);
-  border-bottom: 1px solid rgba(0,0,0,0.04);
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  backdrop-filter: blur(3px);
-}
-
-.header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-.brand .mutt-name { margin:0; font-size:1.15rem; color:var(--foliage); letter-spacing:0.02em; font-weight:600; }
-.brand .mutt-loc { margin:0; font-size:0.85rem; color:var(--muted); }
-
-/* Nav uses river color for interaction states */
-.site-nav { display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; margin-left:auto; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:0.25rem; }
-.site-nav .nav-item { color:var(--text); text-decoration:none; padding:0.55rem 0.85rem; border-radius:6px; font-size:0.98rem; white-space:nowrap; }
-.site-nav .nav-item:hover, .site-nav .nav-item:focus {
-  background: rgba(37,161,166,0.08);
-  color: var(--river-start);
-  outline: none;
-}
-
-/* accent links use saffron but river-blue for special highlights */
-a { color: var(--accent); }
-a:focus { outline: 2px solid rgba(217,119,41,0.18); outline-offset:2px; }
-
-/* ---------------------------------------------------------------------------
-   Content blocks (subtle nature-inspired styling)
-   --------------------------------------------------------------------------- */
-.hero { padding:2.25rem 1.25rem; text-align:center; }
-.hero-title.small { color: var(--foliage); }
-.hero-text { margin:0; color:var(--muted); }
-
-.summary { background: rgba(255,255,255,0.75); margin:1rem auto; padding:1rem; border-radius:8px; border-left:4px solid rgba(47,107,47,0.06); box-shadow: 0 6px 18px rgba(34,66,56,0.03); }
-.read-more { color:var(--river-start); text-decoration:none; font-weight:600; }
-
-/* News */
+/* Summary and news */
+.summary { background: rgba(255,255,255,0.94); margin:1rem auto; padding:1rem; border-radius:8px; border-left:4px solid rgba(47,107,47,0.06); }
 .latest-news { margin-top:1rem; }
-.news-cards { display:flex; flex-direction:column; gap:0.85rem; }
-.news-card { background:var(--card); padding:0.85rem; border-radius:8px; border:1px solid rgba(0,0,0,0.04); box-shadow: 0 6px 14px rgba(0,0,0,0.03); }
-.news-card h4 { margin:0 0 0.25rem 0; font-size:1rem; color:var(--foliage); }
+.news-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; }
+.news-card h4 { margin:0 0 0.35rem 0; color:var(--foliage); }
 .news-date { font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem; }
-
-/* Parampara */
-.parampara-list { list-style:none; padding:0; margin:0; display:block; }
-.parampara-list li { padding:0.6rem 0; border-bottom:1px dashed rgba(0,0,0,0.04); }
-.parampara-list .current { background: rgba(37,143,166,0.04); border-left:4px solid var(--river-start); padding-left:0.8rem; }
 
 /* Footer */
 .site-footer { margin-top:2.25rem; padding:1rem 0; border-top:1px solid rgba(0,0,0,0.04); color:var(--muted); font-size:0.92rem; }
-.footer-inner { display:flex; flex-direction:row; justify-content:space-between; align-items:center; gap:1rem; }
-
-/* Content area */
-.content { padding-top:1rem; padding-bottom:2rem; }
+.footer-inner { display:flex; justify-content:space-between; gap:1rem; align-items:center; }
 
 /* Utilities */
 .muted { color:var(--muted); }
 .small-muted { color:var(--muted); font-size:0.9rem; }
-.article-body img { max-width:100%; height:auto; border-radius:6px; }
-
-/* Gallery */
-.gallery-grid { display:grid; gap:0.75rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top:1rem; }
-.gallery-item { border-radius:8px; overflow:hidden; background:var(--card); display:flex; align-items:center; justify-content:center; min-height:120px; border:1px solid rgba(0,0,0,0.04); }
-.placeholder-box { color:var(--muted); padding:1rem; text-align:center; }
-
-/* News list page */
-.news-list-item { padding:0.8rem 0; border-bottom:1px solid rgba(0,0,0,0.03); }
-.article-view { background:var(--card); padding:1rem; border-radius:8px; margin-top:1rem; }
-
-/* Accessibility & focus */
 a { color:var(--accent); }
 a:focus { outline:2px solid rgba(217,119,41,0.18); outline-offset:2px; }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .container { padding: 0.95rem; }
-  .hero-overlay { left: 6%; bottom: 15%; padding: clamp(0.7rem, 2.2vw, 1.2rem); }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .hero-wave { height: 90px; }
+/* -----------------------------------------
+   Responsive rules: show hamburger and hide nav by default
+   ----------------------------------------- */
+@media (max-width: 880px) {
+  /* show hamburger label */
+  .nav-toggle-label { display:flex; align-items:center; justify-content:center; margin-left:8px; }
+  /* hide the nav until toggled */
+  .site-nav { display:none; position: absolute; right: 1rem; top: 76px; background: rgba(255,255,255,0.98); border-radius:10px; box-shadow: 0 10px 30px rgba(20,40,30,0.08); padding: 0.6rem; flex-direction:column; min-width: 180px; }
+  .site-nav .nav-item { display:block; padding:0.6rem 1rem; margin:0.15rem 0; }
+  /* when checkbox is checked, show nav */
+  .nav-toggle:checked + .nav-toggle-label + .site-nav { display:flex; }
 }
 
 @media (max-width: 699px) {
-  .header-inner { flex-direction:column; align-items:flex-start; gap:0.5rem; }
-  .site-nav { width:100%; justify-content:flex-start; gap:0.6rem; padding-top: 0.25rem; padding-bottom: 0.25rem; }
-  .hero-overlay {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 6%;
-    width: calc(100% - 2rem);
-    max-width: none;
-    padding: 0.88rem 1rem;
-    border-radius: 8px;
-    text-align: center;
+  .intro-grid { grid-template-columns: 1fr; }
+  .intro-quick { order: 2; }
+  .intro-text { order: 1; }
+  .hero-image {
+    align-items: center;
+    justify-content: center;
+    background-position: center 35%;  /* helps preserve focal point on phones */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 62vh;
+    min-height: 280px;
   }
-  .hero-title { font-size: clamp(1.4rem, 6.5vw, 1.95rem); }
-  .hero-subtitle { font-size: clamp(1rem, 4.2vw, 1.05rem); }
-  .hero-tagline { font-size: clamp(0.95rem, 3.2vw, 0.95rem); }
+  .hero-overlay {
+    position: relative;
+    margin: 0 auto;
+    transform: none;
+    width: calc(100% - 2rem);
+    max-width: 680px;
+    bottom: auto;
+    padding: 0.85rem 1rem;
+    text-align: center;
+    border-left: none;
+    border-top: 4px solid rgba(217,119,41,0.12);
+  }
+  .header-inner { flex-direction: column; align-items: flex-start; gap:0.5rem; }
+  .site-nav { width:100%; justify-content:flex-start; gap:0.6rem; padding-top:0.25rem; padding-bottom:0.25rem; overflow-x:auto; }
   .site-nav .nav-item { padding: 0.6rem 0.9rem; font-size: 1rem; }
-  .news-cards { flex-direction: column; }
-  .hero-wave { height: 80px; }
+  .news-grid { grid-template-columns: 1fr; gap: 1rem; }
 }
 
 @media (max-width: 420px) {
-  .hero-image { min-height: 260px; height: 56vh; }
-  .hero-overlay { bottom: 5%; padding: 0.7rem 0.85rem; border-radius: 6px; }
+  .hero-image { background-position: center 30%; height: 56vh; min-height: 260px; }
   .hero-title { font-size: 1.35rem; }
   .hero-subtitle { font-size: 0.98rem; }
   .hero-tagline { font-size: 0.9rem; }
-  .hero-wave { height: 70px; }
-}
-
-/* Desktop: use a multi-column news grid when there is space */
-@media (min-width: 1000px) {
-  .news-cards { flex-direction: row; gap: 1rem; }
-  .news-card { flex: 1 1 0; }
+  .brand-name { font-size: 0.95rem; }
+  .crest { width:48px; height:48px; }
 }
