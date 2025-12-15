@@ -2,6 +2,7 @@
    - Traditional, minimal, serif typography
    - Saffron / beige palette
    - Responsive layout without frameworks
+   - Updated for improved mobile responsiveness (tap targets, fluid type, nav wrapping)
 */
 
 /* Base colors */
@@ -12,19 +13,28 @@
   --muted: #6b5a45;
   --card: #fff;
   --max-width: 1000px;
-  --container-pad: 1rem;
+
+  /* Fluid spacing and tap-target sizes */
+  --container-pad: 1.25rem;
+  --container-pad-sm: 0.9rem;
+  --nav-gap: 0.75rem;
+
   --serif: Georgia, "Times New Roman", Times, serif;
 }
 
 /* Reset and basic */
 * { box-sizing: border-box; }
-html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: var(--bg); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-.container { max-width: var(--max-width); margin: 0 auto; padding: 1.25rem; }
+html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: var(--bg); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; -webkit-text-size-adjust:100%; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: var(--container-pad); }
+
+/* Improve readability on small screens with fluid type */
+h1, h2, h3, h4, h5 { line-height: 1.15; margin: 0 0 0.5rem 0; }
+p { margin: 0 0 0.75rem 0; }
 
 /* ---------------------------------------------------------------------------
    Full-width hero-image (new)
    - Uses images/hero.png as background
-   - Full-width, ~85vh height, responsive
+   - Full-width, ~85vh height, responsive with a cap
    - Contains a dark semi-transparent overlay with white, serif text
    - Overlay is positioned center-left on wide screens and centered on small screens
    --------------------------------------------------------------------------- */
@@ -35,12 +45,13 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
   background-position: center;
   background-repeat: no-repeat;
 
-  /* Make the hero occupy most of the viewport height (dignified presence) */
+  /* Make the hero occupy most of the viewport height (dignified presence).
+     Use clamp to remain reasonable on very tall or very short devices. */
   height: 85vh;
+  height: clamp(48vh, 85vh, 88vh); /* responsive fallback */
+  min-height: 380px;               /* ensure enough vertical room on very small viewports */
   width: 100%;
   position: relative;
-
-  /* Ensure the hero sits visually apart from the page content */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,48 +60,51 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 /* Overlay box for text (ensures legibility over the image).
    Uses a dark translucent background and white serif text for a traditional look. */
 .hero-overlay {
-  /* A gentle dark overlay behind the text for legibility */
   background: rgba(0, 0, 0, 0.45);
   color: #ffffff;
 
-  /* Typography */
+  /* Fluid typography using clamp() for scale across devices */
   font-family: var(--serif);
   line-height: 1.2;
 
-  /* Positioning: center-left on large screens to match dignified layouts */
+  /* Positioning: center-left on large screens to match dignified layouts; on small screens it's centered */
   position: absolute;
   left: 6%;
   bottom: 18%;
-  max-width: 720px;
+  max-width: 760px;
 
   /* Spacing and visual shape */
-  padding: 1.25rem 1.5rem;
-  border-radius: 8px;
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  border-radius: 10px;
 
   /* Slight text shadow helps against complex backgrounds */
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+
+  /* Ensure overlays are easily readable on narrow widths */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
-/* Hero text elements */
+/* Hero text elements with fluid sizes */
 .hero-title {
   margin: 0 0 0.25rem 0;
-  font-size: 2.25rem;
+  font-size: clamp(1.5rem, 5vw, 2.6rem);
   color: #fff;
   letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 .hero-subtitle {
   margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3vw, 1.25rem);
   color: #fff;
   font-weight: 400;
 }
 
 .hero-tagline {
   margin: 0;
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 2.4vw, 1rem);
   color: #fff;
-  opacity: 0.95;
+  opacity: 0.98;
   font-style: normal;
 }
 
@@ -98,19 +112,59 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 .hero .hero-title.small { font-size: 1.25rem; color: var(--accent); }
 
 /* ---------------------------------------------------------------------------
-   End hero-image styles
+   Navigation & header improvements for mobile
+   - Allow nav to wrap / scroll horizontally on small screens
+   - Increase tap target sizes for accessibility and mobile friendliness
    --------------------------------------------------------------------------- */
+.site-header {
+  background: linear-gradient(180deg, rgba(232,136,47,0.06), transparent);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(2px); /* subtle effect on some browsers */
+}
 
-/* Header */
-.site-header { background: linear-gradient(180deg, rgba(232,136,47,0.06), transparent); border-bottom: 1px solid rgba(0,0,0,0.03); }
 .header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-.brand .mutt-name { margin:0; font-size:1.25rem; color:var(--accent); letter-spacing:0.02em; }
-.brand .mutt-loc { margin:0; font-size:0.9rem; color:var(--muted); }
+.brand .mutt-name { margin:0; font-size:1.15rem; color:var(--accent); letter-spacing:0.02em; }
+.brand .mutt-loc { margin:0; font-size:0.85rem; color:var(--muted); }
 
-/* Navigation */
-.site-nav { display:flex; gap:0.75rem; align-items:center; }
-.site-nav .nav-item { color:var(--text); text-decoration:none; padding:0.5rem 0.6rem; border-radius:4px; font-size:0.95rem; }
-.site-nav .nav-item:hover { background: rgba(0,0,0,0.03); color:var(--accent); }
+/* Nav as a flexible, wrapping row that becomes scrollable on very narrow screens */
+.site-nav {
+  display:flex;
+  gap: var(--nav-gap);
+  align-items:center;
+  flex-wrap:wrap;
+  margin-left: auto;
+  /* On very narrow screens allow horizontal scrolling */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.25rem;
+}
+
+/* Nav items: enlarge tap targets on mobile */
+.site-nav .nav-item {
+  color:var(--text);
+  text-decoration:none;
+  padding: clamp(0.45rem, 1.4vw, 0.9rem) clamp(0.6rem, 2vw, 1rem);
+  border-radius:6px;
+  font-size: clamp(0.95rem, 1.8vw, 1rem);
+  display:inline-block;
+  min-height: 44px;            /* recommended touch target height */
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.site-nav .nav-item:hover,
+.site-nav .nav-item:focus {
+  background: rgba(0,0,0,0.03);
+  color:var(--accent);
+  outline: none;
+  box-shadow: none;
+}
+
+/* Ensure nav scrollbar is hidden but still usable on desktop */
+.site-nav::-webkit-scrollbar { height: 8px; }
+.site-nav::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 6px; }
 
 /* Hero (existing small hero) */
 .hero { padding:2.25rem 1.25rem; text-align:center; }
@@ -121,7 +175,7 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 .summary { background: rgba(255,255,255,0.6); margin:1rem auto; padding:1rem; border-radius:6px; }
 .read-more { color:var(--accent); text-decoration:none; font-weight:600; }
 
-/* News */
+/* News: switch to grid on larger screens, stacked on mobile */
 .latest-news { margin-top:1rem; }
 .news-cards { display:flex; flex-direction:column; gap:0.75rem; }
 .news-card { background:var(--card); padding:0.75rem; border-radius:6px; border:1px solid rgba(0,0,0,0.04); }
@@ -135,7 +189,7 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 
 /* Footer */
 .site-footer { margin-top:2rem; padding:1rem 0; border-top:1px solid rgba(0,0,0,0.03); color:var(--muted); font-size:0.9rem; }
-.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.footer-inner { display:flex; flex-direction:row; justify-content:space-between; align-items:center; gap:1rem; }
 
 /* Content area */
 .content { padding-top:1rem; padding-bottom:2rem; }
@@ -144,12 +198,6 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 .muted { color:var(--muted); }
 .small-muted { color:var(--muted); font-size:0.9rem; }
 .article-body img { max-width:100%; height:auto; }
-
-/* Responsive layout */
-@media (min-width:700px) {
-  .news-cards { flex-direction:row; }
-  .news-card { flex:1; }
-}
 
 /* Gallery */
 .gallery-grid { display:grid; gap:0.75rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top:1rem; }
@@ -160,16 +208,25 @@ html,body { height:100%; margin:0; padding:0; font-family: var(--serif); backgro
 .news-list-item { padding:0.75rem 0; border-bottom:1px solid rgba(0,0,0,0.03); }
 .article-view { background:var(--card); padding:1rem; border-radius:6px; margin-top:1rem; }
 
-/* Accessibility */
+/* Accessibility & focus */
 a { color:var(--accent); }
 a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
 
-/* Keep layout pleasant on small screens */
-@media (max-width:699px) {
+/* ---------------------------------------------------------------------------
+   Responsive breakpoints
+   - Adjust spacing, fonts and layout for smaller devices
+   - Ensure the hero overlay is centered and legible on mobile screens
+   --------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .container { padding: var(--container-pad-sm); }
+  .hero-overlay { left: 6%; bottom: 15%; padding: clamp(0.6rem, 2.2vw, 1.2rem); }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+
+@media (max-width: 699px) {
+  /* Stack header content vertically and keep nav easily reachable */
   .header-inner { flex-direction:column; align-items:flex-start; gap:0.5rem; }
-  .site-nav { width:100%; justify-content:space-between; }
-  .brand .mutt-name { font-size:1.05rem; }
-  .container { padding:0.75rem; }
+  .site-nav { width:100%; justify-content:flex-start; gap:0.6rem; padding-top: 0.25rem; padding-bottom: 0.25rem; }
 
   /* Make the hero overlay centered and full-width friendly on small screens */
   .hero-overlay {
@@ -179,11 +236,35 @@ a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
     width: calc(100% - 2rem);
     max-width: none;
     padding: 0.9rem 1rem;
-    border-radius: 6px;
+    border-radius: 8px;
     text-align: center;
   }
 
-  .hero-title { font-size: 1.6rem; }
-  .hero-subtitle { font-size: 1.05rem; }
-  .hero-tagline { font-size: 0.95rem; }
+  /* Slight adjustments for hero text on small screens */
+  .hero-title { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+  .hero-subtitle { font-size: clamp(1rem, 4.2vw, 1.05rem); }
+  .hero-tagline { font-size: clamp(0.95rem, 3.2vw, 0.95rem); }
+
+  /* Ensure nav items are comfortable to tap on narrow devices */
+  .site-nav .nav-item { padding: 0.6rem 0.9rem; font-size: 1rem; }
+
+  /* News cards: keep stacked layout for readability */
+  .news-cards { flex-direction: column; }
+}
+
+/* Very small devices (phones with narrow width) */
+@media (max-width: 420px) {
+  .hero-image { min-height: 320px; }
+  .hero-overlay { bottom: 6%; padding: 0.7rem 0.85rem; border-radius: 6px; }
+  .hero-title { font-size: 1.35rem; }
+  .hero-subtitle { font-size: 0.98rem; }
+  .hero-tagline { font-size: 0.9rem; }
+  .site-nav .nav-item { min-height: 40px; padding: 0.55rem 0.8rem; }
+  .brand .mutt-name { font-size: 1rem; }
+}
+
+/* Desktop: use a multi-column news grid when there is space */
+@media (min-width: 1000px) {
+  .news-cards { flex-direction: row; gap: 1rem; }
+  .news-card { flex: 1 1 0; }
 }
