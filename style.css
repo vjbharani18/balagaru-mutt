@@ -1,59 +1,49 @@
-/* Common styles for Balagaru Mutt site
+/* Common styles for Sri Arya Akshobya teertha moola Samsthanam Balagaru
    - Traditional, minimal, serif typography
-   - Saffron / beige palette
+   - Nature + Tungabhadra-inspired palette (river blues & foliage greens)
    - Responsive layout without frameworks
-   - Updated to ensure hero image adjusts gracefully on mobile devices
+   - Decorative SVG wave included in the hero to suggest the river
 */
 
-/* Base colors */
+/* Palette: balanced between saffron (traditional) and river/foliage tones */
 :root{
-  --bg: #faf3ea;          /* light beige */
-  --accent: #e8882f;      /* saffron */
-  --text: #222;
+  --bg: #fbf7f2;          /* warm, light parchment */
+  --accent: #d97729;      /* saffron accent (kept for tradition) */
+  --river-start: #1f6f8b; /* deep river blue */
+  --river-end: #25a1a6;   /* lighter river teal */
+  --foliage: #2f6b2f;     /* deep green for headings/accents */
+  --text: #1e2a24;        /* near-black with warm tone */
   --muted: #6b5a45;
-  --card: #fff;
-  --max-width: 1000px;
-
-  /* Fluid spacing and tap-target sizes */
+  --card: #ffffff;
+  --max-width: 1100px;
   --container-pad: 1.25rem;
   --container-pad-sm: 0.9rem;
-  --nav-gap: 0.75rem;
-
   --serif: Georgia, "Times New Roman", Times, serif;
 }
 
-/* Reset and basic */
+/* Reset and base */
 * { box-sizing: border-box; }
-html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: var(--bg); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; -webkit-text-size-adjust:100%; }
+html,body { height:100%; margin:0; padding:0; font-family: var(--serif); background: linear-gradient(180deg, var(--bg), #eef7f5); color: var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; -webkit-text-size-adjust:100%; }
 .container { max-width: var(--max-width); margin: 0 auto; padding: var(--container-pad); }
 
-/* Improve readability on small screens with fluid type */
-h1, h2, h3, h4, h5 { line-height: 1.15; margin: 0 0 0.5rem 0; }
-p { margin: 0 0 0.75rem 0; }
+/* Typography helpers */
+h1,h2,h3,h4 { margin:0 0 0.5rem 0; line-height:1.15; }
+p { margin:0 0 0.9rem 0; color: var(--muted); }
 
 /* ---------------------------------------------------------------------------
-   Full-width hero-image (new)
-   - Uses images/hero.png as background
-   - Full-width, ~85vh height, responsive with a cap
-   - Contains a dark semi-transparent overlay with white, serif text
-   - Overlay is positioned center-left on wide screens and centered on small screens
-   - New: adjustments to background-position and background-size for mobile to preserve focal subject
+   Full-width hero-image
+   - Background: images/hero.png (kept)
+   - Dark overlay for text,
+   - Decorative river wave at the base (SVG)
    --------------------------------------------------------------------------- */
 .hero-image {
-  /* Background image for the full-width hero */
   background-image: url("images/hero.png");
-  background-size: cover;           /* cover ensures the image fills the area, may crop */
-  background-position: center center; /* default focal point */
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-
-  /* Prevent 'fixed' parallax behavior which can be problematic on mobile browsers */
   background-attachment: scroll;
-
-  /* Make the hero occupy most of the viewport height (dignified presence).
-     Use clamp to remain reasonable on very tall or very short devices. */
-  height: 85vh;
-  height: clamp(48vh, 85vh, 88vh); /* responsive fallback */
-  min-height: 360px;               /* ensure enough vertical room on very small viewports */
+  height: clamp(48vh, 78vh, 85vh);
+  min-height: 320px;
   width: 100%;
   position: relative;
   display: flex;
@@ -62,228 +52,142 @@ p { margin: 0 0 0.75rem 0; }
   overflow: hidden;
 }
 
-/* Overlay box for text (ensures legibility over the image).
-   Uses a dark translucent background and white serif text for a traditional look. */
+/* Overlay box for text (enhanced to match river/foliage theme) */
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.45);
+  /* slightly cooler overlay to blend with river palette */
+  background: linear-gradient(180deg, rgba(8,36,49,0.48), rgba(10,56,68,0.42));
   color: #ffffff;
-
-  /* Fluid typography using clamp() for scale across devices */
   font-family: var(--serif);
   line-height: 1.2;
-
-  /* Positioning: center-left on large screens to match dignified layouts; on small screens it's centered */
   position: absolute;
   left: 6%;
   bottom: 18%;
   max-width: 760px;
-
-  /* Spacing and visual shape */
-  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  padding: clamp(0.9rem, 2.6vw, 1.6rem);
   border-radius: 10px;
-
-  /* Slight text shadow helps against complex backgrounds */
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-
-  /* Ensure overlays are easily readable on narrow widths */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 24px rgba(12,40,50,0.25);
+  border-left: 4px solid rgba(255,255,255,0.06); /* subtle decorative stripe */
 }
 
-/* Hero text elements with fluid sizes */
+/* Hero text with dignified typography */
 .hero-title {
   margin: 0 0 0.25rem 0;
-  font-size: clamp(1.5rem, 5vw, 2.6rem);
-  color: #fff;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
   letter-spacing: 0.02em;
   font-weight: 600;
+  color: #fff;
 }
 
 .hero-subtitle {
   margin: 0 0 0.5rem 0;
-  font-size: clamp(1rem, 3vw, 1.25rem);
-  color: #fff;
-  font-weight: 400;
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
 }
 
 .hero-tagline {
   margin: 0;
   font-size: clamp(0.95rem, 2.4vw, 1rem);
-  color: #fff;
-  opacity: 0.98;
-  font-style: normal;
+  color: rgba(255,255,255,0.95);
+  opacity: 0.96;
 }
 
-/* Smaller variant used by existing small hero section below */
-.hero .hero-title.small { font-size: 1.25rem; color: var(--accent); }
-
-/* ---------------------------------------------------------------------------
-   Mobile-specific hero adjustments:
-   - Re-center or shift the background focal point so important parts of image remain visible
-   - Slightly increase background-size on very narrow screens to allow graceful cropping
-   - Ensure overlay remains legible and well-placed
-   --------------------------------------------------------------------------- */
-
-/* Medium-small screens: nudge the focal point slightly upward so faces/temple tops appear */
-@media (max-width: 900px) {
-  .hero-image {
-    /* Move focal point slightly up to show upper subject when height is reduced */
-    background-position: center 35%;
-    /* On medium screens, ensure the image still covers the area */
-    background-size: cover;
-  }
-}
-
-/* Typical phones: center and increase background-size to preserve subject visibility */
-@media (max-width: 699px) {
-  .hero-image {
-    /* On phones prefer a slightly higher crop to keep subject visible */
-    background-position: center 30%;
-    /* Make background a bit larger so important subject remains visible after cropping */
-    background-size: 120%;
-    /* Reduce min-height to better fit shorter screens while keeping presence */
-    min-height: 300px;
-    height: 62vh;
-  }
-
-  .hero-overlay {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 8%;
-    width: calc(100% - 2rem);
-    max-width: none;
-    padding: 0.9rem 1rem;
-    border-radius: 8px;
-    text-align: center;
-  }
-}
-
-/* Very narrow / tall phones: fine tune cropping and overlay */
-@media (max-width: 420px) {
-  .hero-image {
-    /* On very narrow displays we prioritize center-top so logo/text above image may remain visible */
-    background-position: center 25%;
-    background-size: 140%;
-    min-height: 280px;
-    height: 58vh;
-  }
-
-  .hero-overlay {
-    bottom: 6%;
-    padding: 0.7rem 0.85rem;
-    border-radius: 6px;
-  }
-
-  .hero-title { font-size: 1.35rem; }
-  .hero-subtitle { font-size: 0.98rem; }
-  .hero-tagline { font-size: 0.9rem; }
+/* Decorative SVG wave styling */
+.hero-wave {
+  position: absolute;
+  left: 0;
+  bottom: -1px; /* overlap a hair to hide seam */
+  width: 100%;
+  height: 110px;
+  display: block;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 -6px 18px rgba(0,0,0,0.12));
 }
 
 /* ---------------------------------------------------------------------------
-   Navigation & header improvements for mobile
-   - Allow nav to wrap / scroll horizontally on small screens
-   - Increase tap target sizes for accessibility and mobile friendliness
+   Header and navigation tuned to nature palette
    --------------------------------------------------------------------------- */
 .site-header {
-  background: linear-gradient(180deg, rgba(232,136,47,0.06), transparent);
-  border-bottom: 1px solid rgba(0,0,0,0.03);
+  background: linear-gradient(180deg, rgba(239,249,247,0.9), transparent);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
   position: sticky;
   top: 0;
-  z-index: 40;
-  backdrop-filter: blur(2px); /* subtle effect on some browsers */
+  z-index: 60;
+  backdrop-filter: blur(3px);
 }
 
 .header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-.brand .mutt-name { margin:0; font-size:1.15rem; color:var(--accent); letter-spacing:0.02em; }
+.brand .mutt-name { margin:0; font-size:1.15rem; color:var(--foliage); letter-spacing:0.02em; font-weight:600; }
 .brand .mutt-loc { margin:0; font-size:0.85rem; color:var(--muted); }
 
-/* Nav as a flexible, wrapping row that becomes scrollable on very narrow screens */
-.site-nav {
-  display:flex;
-  gap: var(--nav-gap);
-  align-items:center;
-  flex-wrap:wrap;
-  margin-left: auto;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 0.25rem;
-}
-
-/* Nav items: enlarge tap targets on mobile */
-.site-nav .nav-item {
-  color:var(--text);
-  text-decoration:none;
-  padding: clamp(0.45rem, 1.4vw, 0.9rem) clamp(0.6rem, 2vw, 1rem);
-  border-radius:6px;
-  font-size: clamp(0.95rem, 1.8vw, 1rem);
-  display:inline-block;
-  min-height: 44px;            /* recommended touch target height */
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.site-nav .nav-item:hover,
-.site-nav .nav-item:focus {
-  background: rgba(0,0,0,0.03);
-  color:var(--accent);
+/* Nav uses river color for interaction states */
+.site-nav { display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap; margin-left:auto; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:0.25rem; }
+.site-nav .nav-item { color:var(--text); text-decoration:none; padding:0.55rem 0.85rem; border-radius:6px; font-size:0.98rem; white-space:nowrap; }
+.site-nav .nav-item:hover, .site-nav .nav-item:focus {
+  background: rgba(37,161,166,0.08);
+  color: var(--river-start);
   outline: none;
 }
 
-/* Ensure nav scrollbar is hidden but still usable on desktop */
-.site-nav::-webkit-scrollbar { height: 8px; }
-.site-nav::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.06); border-radius: 6px; }
+/* accent links use saffron but river-blue for special highlights */
+a { color: var(--accent); }
+a:focus { outline: 2px solid rgba(217,119,41,0.18); outline-offset:2px; }
 
-/* Hero (existing small hero) */
+/* ---------------------------------------------------------------------------
+   Content blocks (subtle nature-inspired styling)
+   --------------------------------------------------------------------------- */
 .hero { padding:2.25rem 1.25rem; text-align:center; }
-.hero-title { margin:0 0 0.5rem 0; font-size:1.5rem; color:var(--accent); }
+.hero-title.small { color: var(--foliage); }
 .hero-text { margin:0; color:var(--muted); }
 
-/* Sections */
-.summary { background: rgba(255,255,255,0.6); margin:1rem auto; padding:1rem; border-radius:6px; }
-.read-more { color:var(--accent); text-decoration:none; font-weight:600; }
+.summary { background: rgba(255,255,255,0.75); margin:1rem auto; padding:1rem; border-radius:8px; border-left:4px solid rgba(47,107,47,0.06); box-shadow: 0 6px 18px rgba(34,66,56,0.03); }
+.read-more { color:var(--river-start); text-decoration:none; font-weight:600; }
 
-/* News: switch to grid on larger screens, stacked on mobile */
+/* News */
 .latest-news { margin-top:1rem; }
-.news-cards { display:flex; flex-direction:column; gap:0.75rem; }
-.news-card { background:var(--card); padding:0.75rem; border-radius:6px; border:1px solid rgba(0,0,0,0.04); }
-.news-card h4 { margin:0 0 0.25rem 0; font-size:1rem; }
+.news-cards { display:flex; flex-direction:column; gap:0.85rem; }
+.news-card { background:var(--card); padding:0.85rem; border-radius:8px; border:1px solid rgba(0,0,0,0.04); box-shadow: 0 6px 14px rgba(0,0,0,0.03); }
+.news-card h4 { margin:0 0 0.25rem 0; font-size:1rem; color:var(--foliage); }
 .news-date { font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem; }
 
 /* Parampara */
 .parampara-list { list-style:none; padding:0; margin:0; display:block; }
 .parampara-list li { padding:0.6rem 0; border-bottom:1px dashed rgba(0,0,0,0.04); }
-.parampara-list .current { background: rgba(232,136,47,0.06); }
+.parampara-list .current { background: rgba(37,143,166,0.04); border-left:4px solid var(--river-start); padding-left:0.8rem; }
 
 /* Footer */
-.site-footer { margin-top:2rem; padding:1rem 0; border-top:1px solid rgba(0,0,0,0.03); color:var(--muted); font-size:0.9rem; }
+.site-footer { margin-top:2.25rem; padding:1rem 0; border-top:1px solid rgba(0,0,0,0.04); color:var(--muted); font-size:0.92rem; }
 .footer-inner { display:flex; flex-direction:row; justify-content:space-between; align-items:center; gap:1rem; }
 
 /* Content area */
 .content { padding-top:1rem; padding-bottom:2rem; }
 
-/* Small utilities */
+/* Utilities */
 .muted { color:var(--muted); }
 .small-muted { color:var(--muted); font-size:0.9rem; }
-.article-body img { max-width:100%; height:auto; }
+.article-body img { max-width:100%; height:auto; border-radius:6px; }
 
 /* Gallery */
 .gallery-grid { display:grid; gap:0.75rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top:1rem; }
-.gallery-item { border-radius:6px; overflow:hidden; background:var(--card); display:flex; align-items:center; justify-content:center; min-height:120px; border:1px solid rgba(0,0,0,0.04); }
+.gallery-item { border-radius:8px; overflow:hidden; background:var(--card); display:flex; align-items:center; justify-content:center; min-height:120px; border:1px solid rgba(0,0,0,0.04); }
 .placeholder-box { color:var(--muted); padding:1rem; text-align:center; }
 
 /* News list page */
-.news-list-item { padding:0.75rem 0; border-bottom:1px solid rgba(0,0,0,0.03); }
-.article-view { background:var(--card); padding:1rem; border-radius:6px; margin-top:1rem; }
+.news-list-item { padding:0.8rem 0; border-bottom:1px solid rgba(0,0,0,0.03); }
+.article-view { background:var(--card); padding:1rem; border-radius:8px; margin-top:1rem; }
 
 /* Accessibility & focus */
 a { color:var(--accent); }
-a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
+a:focus { outline:2px solid rgba(217,119,41,0.18); outline-offset:2px; }
 
-/* ---------------------------------------------------------------------------
-   Responsive breakpoints (other adjustments kept)
-   --------------------------------------------------------------------------- */
+/* Responsive adjustments */
 @media (max-width: 900px) {
-  .container { padding: var(--container-pad-sm); }
-  .hero-overlay { left: 6%; bottom: 15%; padding: clamp(0.6rem, 2.2vw, 1.2rem); }
+  .container { padding: 0.95rem; }
+  .hero-overlay { left: 6%; bottom: 15%; padding: clamp(0.7rem, 2.2vw, 1.2rem); }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .hero-wave { height: 90px; }
 }
 
 @media (max-width: 699px) {
@@ -292,28 +196,28 @@ a:focus { outline:2px solid rgba(232,136,47,0.25); outline-offset:2px; }
   .hero-overlay {
     left: 50%;
     transform: translateX(-50%);
-    bottom: 8%;
+    bottom: 6%;
     width: calc(100% - 2rem);
     max-width: none;
-    padding: 0.9rem 1rem;
+    padding: 0.88rem 1rem;
     border-radius: 8px;
     text-align: center;
   }
-  .hero-title { font-size: clamp(1.4rem, 6.5vw, 1.9rem); }
+  .hero-title { font-size: clamp(1.4rem, 6.5vw, 1.95rem); }
   .hero-subtitle { font-size: clamp(1rem, 4.2vw, 1.05rem); }
   .hero-tagline { font-size: clamp(0.95rem, 3.2vw, 0.95rem); }
   .site-nav .nav-item { padding: 0.6rem 0.9rem; font-size: 1rem; }
   .news-cards { flex-direction: column; }
+  .hero-wave { height: 80px; }
 }
 
 @media (max-width: 420px) {
-  .hero-image { min-height: 280px; }
-  .hero-overlay { bottom: 6%; padding: 0.7rem 0.85rem; border-radius: 6px; }
+  .hero-image { min-height: 260px; height: 56vh; }
+  .hero-overlay { bottom: 5%; padding: 0.7rem 0.85rem; border-radius: 6px; }
   .hero-title { font-size: 1.35rem; }
   .hero-subtitle { font-size: 0.98rem; }
   .hero-tagline { font-size: 0.9rem; }
-  .site-nav .nav-item { min-height: 40px; padding: 0.55rem 0.8rem; }
-  .brand .mutt-name { font-size: 1rem; }
+  .hero-wave { height: 70px; }
 }
 
 /* Desktop: use a multi-column news grid when there is space */
