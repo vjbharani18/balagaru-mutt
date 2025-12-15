@@ -5,165 +5,134 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sri Arya Akshobya teertha moola Samsthanam Balagaru — Teerthahalli</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Light SEO -->
-  <meta name="description" content="Sri Arya Akshobya teertha moola Samsthanam Balagaru — traditional Vedic Samsthanam preserving Parampara, seva and upadesha by the Tungabhadra river." />
+  <meta name="description" content="Sri Arya Akshobya teertha moola Samsthanam Balagaru — traditional Vedic Samsthanam preserving Parampara, seva and upadesha by the Tungabhadra." />
 </head>
 <body>
-  <!--
-    Full-width hero-image section.
 
-    Updated to incorporate a nature / Tungabhadra-inspired design:
-    - Uses images/hero.png as background (kept)
-    - Dark translucent overlay for legibility
-    - Added a decorative SVG 'wave' at the bottom to evoke the river
-    - Text updated to the site name (kept per previous change)
+  <!-- Top saffron strip (inspired by Siddhagiri) -->
+  <div class="top-strip" aria-hidden="true"></div>
 
-    No Javascript. All layout and visual enhancements are CSS + SVG.
-  -->
-  <section class="hero-image" role="banner" aria-label="Sri Arya Akshobya teertha moola Samsthanam hero">
-    <!-- Overlay containing title, subtitle, and tagline -->
-    <div class="hero-overlay" aria-hidden="false">
-      <h1 class="hero-title">Sri Arya Akshobya teertha moola Samsthanam Balagaru</h1>
+  <!-- Header with CSS-only hamburger menu: checkbox + label (no JavaScript) -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="crest" aria-hidden="true"></div>
+        <div>
+          <!-- Full official name kept in header; hero will use a shorter title -->
+          <div class="brand-line">Sri Arya Akshobya</div>
+          <div class="brand-name">teertha moola Samsthanam Balagaru</div>
+          <div class="mutt-loc">Teerthahalli, Karnataka</div>
+        </div>
+      </div>
+
+      <!-- Nav toggle (checkbox) for mobile -->
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" title="Toggle navigation">
+        <span class="hamburger"></span>
+      </label>
+
+      <!-- Navigation: shown/hidden on mobile via the checkbox above -->
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="parampara.html" class="nav-item">Parampara</a>
+        <a href="news.html" class="nav-item">News</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="admin/index.html" class="nav-item admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: shorter, non-redundant title; overlay is unobtrusive -->
+  <section class="hero-image" role="region" aria-label="Hero">
+    <div class="hero-overlay">
+      <!-- Shorter hero title to avoid repetition -->
+      <h1 class="hero-title">Sri Arya Akshobya Samsthanam</h1>
       <h2 class="hero-subtitle">Teerthahalli</h2>
       <p class="hero-tagline">Preserving Dharma • Sampradaya • Seva</p>
     </div>
-
-    <!-- Decorative SVG wave to suggest the Tungabhadra river flowing at the base of the hero.
-         The SVG is purely decorative (aria-hidden) and sized to be responsive. -->
-    <svg class="hero-wave" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <defs>
-        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="rgba(31,111,139,0.95)"/>
-          <stop offset="100%" stop-color="rgba(37,143,166,0.95)"/>
-        </linearGradient>
-      </defs>
-      <!-- A soft wave path; because the hero has a dark overlay, the wave uses river-blue colors -->
-      <path d="M0,40 C150,120 350,0 600,40 C850,80 1050,20 1200,60 L1200,120 L0,120 Z" fill="url(#g1)"></path>
-      <!-- subtle lighter overlay to add depth -->
-      <path d="M0,60 C150,110 350,20 600,60 C850,100 1050,40 1200,80 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.03)"></path>
-    </svg>
   </section>
 
-  <!-- Site wrapper -->
-  <div class="site">
-
-    <!-- Header -->
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand">
-          <h1 class="mutt-name">Sri Arya Akshobya teertha moola Samsthanam Balagaru</h1>
-          <p class="mutt-loc">Teerthahalli, Karnataka</p>
+  <main>
+    <section class="intro container">
+      <div class="intro-grid">
+        <div class="intro-text card">
+          <h2>Welcome</h2>
+          <p>Sri Arya Akshobya teertha moola Samsthanam Balagaru sits quietly in the nest of nature near the Tungabhadra. We maintain the Guru–Shishya parampara, offer Vedic study and serve the surrounding communities through seva and education.</p>
+          <p><a href="about.html" class="read-more">Learn more about the Samsthanam →</a></p>
         </div>
 
-        <!-- Simple, dignified navigation -->
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html" class="nav-item">Home</a>
-          <a href="about.html" class="nav-item">About</a>
-          <a href="parampara.html" class="nav-item">Parampara</a>
-          <a href="news.html" class="nav-item">News</a>
-          <a href="gallery.html" class="nav-item">Gallery</a>
-          <a href="contact.html" class="nav-item">Contact</a>
-        </nav>
+        <div class="intro-quick card">
+          <h3>Quick Info</h3>
+          <ul>
+            <li><strong>Location:</strong> Teerthahalli, Shimoga</li>
+            <li><strong>Services:</strong> Vedic study, bhajans, yagnas</li>
+            <li><strong>Contact:</strong> contact@balagarumutt.org</li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <!-- Existing small hero retained per original structure -->
-    <main>
-      <section class="hero">
-        <div class="container">
-          <h2 class="hero-title small">A seat of learning, devotion and service</h2>
-          <p class="hero-text">Sri Arya Akshobya teertha moola Samsthanam Balagaru in Teerthahalli is dedicated to preserving the Guru–Shishya tradition and serving the local community with Vedic teaching and social service.</p>
-        </div>
-      </section>
+    <section class="summary container">
+      <h3>Guru Parampara</h3>
+      <p>Our Parampara traces the succession of Acharyas who preserved the teachings. The current Peetadhipati continues the lineage with humility and devotion.</p>
+      <p><a href="parampara.html" class="read-more">See the Parampara →</a></p>
+    </section>
 
-      <!-- About summary -->
-      <section class="summary container">
-        <h3>About the Samsthanam</h3>
-        <p>Sri Arya Akshobya teertha moola Samsthanam Balagaru follows a time‑honoured tradition of spiritual teaching and community service. We offer Vedic study, upadesha (spiritual instruction) and organise periodic yagnas and seva programmes.</p>
-        <p><a href="about.html" class="read-more">Read more →</a></p>
-      </section>
-
-      <!-- Parampara summary -->
-      <section class="summary container">
-        <h3>Guru Parampara</h3>
-        <p>Our Parampara traces the succession of Acharyas who maintained the teaching and practices from generation to generation. The current Peetadhipati continues the lineage with humility and devotion.</p>
-        <p><a href="parampara.html" class="read-more">See the Parampara →</a></p>
-      </section>
-
-      <!-- Latest news (auto-loaded from content/news/index.json) -->
-      <section class="latest-news container" id="latest-news">
-        <h3>Latest News & Events</h3>
-        <div id="news-list">
-          <!-- News items will be injected here by JS -->
-          <p class="muted">Loading recent news…</p>
-        </div>
-        <p><a href="news.html" class="read-more">All news & events →</a></p>
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru. All rights reserved.</p>
-        <p class="small-muted">Designed with a nature- and river-inspired palette. Admin: <a href="admin/index.html">CMS</a></p>
+    <section class="latest-news container" id="latest-news">
+      <h3>Latest News & Events</h3>
+      <div id="news-list">
+        <p class="muted">Loading recent news…</p>
       </div>
-    </footer>
-  </div>
+      <p><a href="news.html" class="read-more">All news & events →</a></p>
+    </section>
+  </main>
 
-  <!-- Minimal JS to load latest news from /content/news/index.json -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <!-- Footer kept concise to avoid repeating hero/header -->
+        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru</p>
+        <p class="small-muted">A respectful, traditional presentation inspired by Indian mutt designs.</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="small-muted">Phone: <span class="muted">+91‑XXXXXXXXXX</span></p>
+        <p class="small-muted">Email: <a href="mailto:contact@balagarumutt.org">contact@balagarumutt.org</a></p>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    // Set copyright year
+    // Only small behavior: set year and load news manifest (unchanged)
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Helper: format ISO date to readable form
     function formatDate(iso) {
-      try {
-        const d = new Date(iso);
-        return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-      } catch (e) { return iso; }
+      try { return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
+      catch (e) { return iso; }
     }
 
-    // Load the news manifest and display newest 3
     (function loadLatestNews() {
-      fetch('/content/news/index.json')
-        .then(function (r) {
-          if (!r.ok) throw new Error('News index not found');
-          return r.json();
-        })
-        .then(function (data) {
-          if (!Array.isArray(data) || data.length === 0) {
-            document.getElementById('news-list').innerHTML = '<p class="muted">No news available.</p>';
-            return;
-          }
-          // Sort newest first by date
-          data.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
-          const latest = data.slice(0, 3);
-          const list = document.createElement('div');
-          list.className = 'news-cards';
-          latest.forEach(function (item) {
-            const card = document.createElement('article');
-            card.className = 'news-card';
-            const title = document.createElement('h4');
-            title.innerHTML = '<a href="news.html?file=' + encodeURIComponent(item.file) + '">' + item.title + '</a>';
-            const date = document.createElement('div');
-            date.className = 'news-date';
-            date.textContent = formatDate(item.date);
-            const excerpt = document.createElement('p');
-            excerpt.textContent = item.excerpt || '';
-            card.appendChild(title);
-            card.appendChild(date);
-            card.appendChild(excerpt);
-            list.appendChild(card);
-          });
-          const container = document.getElementById('news-list');
-          container.innerHTML = '';
-          container.appendChild(list);
-        })
-        .catch(function () {
-          // If fetch fails, show friendly guidance; this could happen before any news are set up.
-          document.getElementById('news-list').innerHTML = '<p class="muted">No news available. Use the admin panel (Admin →) to add news.</p>';
+      fetch('/content/news/index.json').then(function (r) {
+        if (!r.ok) throw new Error('News index not found'); return r.json();
+      }).then(function (data) {
+        if (!Array.isArray(data) || data.length === 0) {
+          document.getElementById('news-list').innerHTML = '<p class="muted">No news available.</p>'; return;
+        }
+        data.sort(function (a,b){return new Date(b.date)-new Date(a.date);});
+        const latest = data.slice(0,4);
+        const list = document.createElement('div'); list.className='news-grid';
+        latest.forEach(function (item){
+          const card = document.createElement('article'); card.className='news-card card';
+          const title = document.createElement('h4'); title.innerHTML = '<a href="news.html?file='+encodeURIComponent(item.file)+'">'+item.title+'</a>';
+          const date = document.createElement('div'); date.className='news-date'; date.textContent = formatDate(item.date);
+          const excerpt = document.createElement('p'); excerpt.textContent = item.excerpt || '';
+          card.appendChild(title); card.appendChild(date); card.appendChild(excerpt); list.appendChild(card);
         });
+        const container = document.getElementById('news-list'); container.innerHTML=''; container.appendChild(list);
+      }).catch(function () {
+        document.getElementById('news-list').innerHTML = '<p class="muted">No news available. Use the admin panel to add news.</p>';
+      });
     })();
   </script>
 </body>
