@@ -7,57 +7,301 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="site">
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand">
-          <h1 class="mutt-name">Balagaru Mutt</h1>
-          <p class="mutt-loc">Teerthahalli</p>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="images/image.png" alt="Narasimha Logo" />
         </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html" class="nav-item">Home</a>
-          <a href="about.html" class="nav-item">About</a>
-          <a href="parampara.html" class="nav-item">Parampara</a>
-          <a href="news.html" class="nav-item">News</a>
-          <a href="gallery.html" class="nav-item">Gallery</a>
-          <a href="contact.html" class="nav-item">Contact</a>
-        </nav>
+        <div class="brand-text">
+          <div class="brand-main">BALAGARU MUTT</div>
+          <div class="brand-sub">Sri Arya Akshobya teertha moola Samsthanam</div>
+        </div>
       </div>
-    </header>
 
-    <main class="container content">
-      <h2>Guru Parampara</h2>
-      <p>The Mutt honours the following Acharyas in succession. The list below is presented with reverence. The current Peetadhipati is highlighted.</p>
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" title="Toggle navigation">
+        <span class="hamburger"></span>
+      </label>
 
-      <ol class="parampara-list">
-        <li>
-          <strong>Srimat Venkatesha Bharati Swami</strong>
-          <div class="muted">Founder — established the line</div>
-        </li>
-        <li>
-          <strong>Srimat Ramachandra Tirtha</strong>
-          <div class="muted">Preserved the practice of Vedic teaching</div>
-        </li>
-        <li class="current">
-          <strong>Srimat Balagaru Peetadhipati</strong>
-          <div class="muted">Current Peetadhipati — guiding the Mutt today</div>
-        </li>
-        <li>
-          <strong>Srimat Vishveshwara Saraswati</strong>
-          <div class="muted">Senior Acharya — teacher and scholar</div>
-        </li>
-      </ol>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="parampara.html" class="nav-item active">Parampara</a>
+        <a href="news.html" class="nav-item">News</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="admin/index.html" class="nav-item admin">Admin</a>
+      </nav>
+    </div>
+  </header>
 
-      <p class="small-muted">Note: Names and titles are shown in a simple, respectful style. Update this page as the lineage grows.</p>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli.</p>
+  <main>
+    <section class="page-header-section">
+      <div class="container">
+        <h1>Guru Parampara</h1>
+        <p class="page-subtitle">The unbroken lineage of Acharyas preserving Madhwa Siddhanta</p>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <section class="main-content-section">
+      <div class="container">
+        <div class="content-card">
+          <p>The Mutt honours the following Acharyas in succession. The list below is presented with reverence. The current Peetadhipati is highlighted. Our lineage follows the <strong>Madhwa Siddhanta</strong> tradition, tracing back to Sri Madhvacharya, the founder of Dvaita Vedanta.</p>
+        </div>
+
+        <div class="content-card highlight-card">
+          <h2>The Madhwa Lineage</h2>
+          <p>The tradition begins with <strong>Sri Madhvacharya</strong> (1238-1317 CE), who established Dvaita Vedanta. His philosophy emphasizes the eternal distinction between the Supreme Lord Vishnu and individual souls, and the reality of the material world. The subsequent Acharyas have preserved and propagated these teachings through an unbroken Guru-Shishya parampara.</p>
+          <p><strong>Balagaru Akshobhya Tirtha Mutt</strong> was first headed by <strong>Sri Lokavandita Teertharu</strong> (1374), the 6th in the parampara. The mutt is located on the banks of river Tunga in Baalagaru village, near Tirthahalli. This mutt is also the Moola Mutt (root mutt) of Kangu Mutt (Kangu means Adike).</p>
+        </div>
+
+        <div class="parampara-timeline">
+          <div class="parampara-item">
+            <div class="parampara-number">1</div>
+            <div class="parampara-content">
+              <h3>Sri Madhvacharya (Purna Prajna)</h3>
+              <p>Founder of Dvaita Vedanta (1238-1317 CE) — Established the philosophy of Tattvavada, wrote commentaries on Prasthana Trayi</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">2</div>
+            <div class="parampara-content">
+              <h3>Padmanabha Teertharu</h3>
+              <p>1324 — Direct disciple of Sri Madhvacharya</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">3</div>
+            <div class="parampara-content">
+              <h3>Narahari Teertharu</h3>
+              <p>1333 — Preserved and propagated Dvaita philosophy</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">4</div>
+            <div class="parampara-content">
+              <h3>Akshobhya Teertharu</h3>
+              <p>1365 — Received the rare Vishwambhara Saligrama with 11 openings and 22 chakras from Lord Srinivasa at Thirumala</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">5</div>
+            <div class="parampara-content">
+              <h3>Trailokyabhushana Teertharu</h3>
+              <p>Received Lord Jayarama idol from Jayatheertha — Continued the lineage</p>
+            </div>
+          </div>
+
+          <div class="parampara-item highlight">
+            <div class="parampara-number">6</div>
+            <div class="parampara-content">
+              <h3>Lokavandita Teertharu</h3>
+              <p>1374 — First head of Balagaru Akshobhya Tirtha Mutt — Established the mutt on the banks of river Tunga</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">7</div>
+            <div class="parampara-content">
+              <h3>Punyakeerthi Teertharu</h3>
+              <p>Preserved the mutt and its traditions</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">8</div>
+            <div class="parampara-content">
+              <h3>Sreenidhi Teertharu</h3>
+              <p>Maintained the Guru-Shishya parampara</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">9</div>
+            <div class="parampara-content">
+              <h3>Sathyakeerthi Teertharu</h3>
+              <p>Continued the propagation of Madhwa Siddhanta</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">10</div>
+            <div class="parampara-content">
+              <h3>Raghava Teertharu</h3>
+              <p>Preserved the teachings and traditions</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">11</div>
+            <div class="parampara-content">
+              <h3>Raghunatha Teertharu I</h3>
+              <p>Maintained the mutt and its activities</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">12</div>
+            <div class="parampara-content">
+              <h3>Madhupathi Teertharu</h3>
+              <p>Continued the lineage with devotion</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">13</div>
+            <div class="parampara-content">
+              <h3>Raghuvarya Teertharu</h3>
+              <p>Preserved the Vedic traditions</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">14</div>
+            <div class="parampara-content">
+              <h3>Raghupathi Teertharu</h3>
+              <p>Maintained the mutt and its teachings</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">15</div>
+            <div class="parampara-content">
+              <h3>Raghunatha Teertharu II</h3>
+              <p>Continued the propagation of Dvaita philosophy</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">16</div>
+            <div class="parampara-content">
+              <h3>Raghuraja Teertharu</h3>
+              <p>Preserved the Guru-Shishya parampara</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">17</div>
+            <div class="parampara-content">
+              <h3>Akshobhyarama Teertharu</h3>
+              <p>Maintained the mutt traditions</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">18</div>
+            <div class="parampara-content">
+              <h3>Akshobhyachandra Teertharu</h3>
+              <p>Continued the lineage</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">19</div>
+            <div class="parampara-content">
+              <h3>Akshobhyaraghuvallabha Teertharu</h3>
+              <p>Preserved the teachings</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">20</div>
+            <div class="parampara-content">
+              <h3>Akshobhyaraghupriya Teertharu</h3>
+              <p>Maintained the mutt activities</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">21</div>
+            <div class="parampara-content">
+              <h3>Akshobhyaraghupurna Teertharu</h3>
+              <p>Continued the propagation</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">22</div>
+            <div class="parampara-content">
+              <h3>Akshobhyaraghuprajna Teertharu</h3>
+              <p>Preserved the Vedic traditions</p>
+            </div>
+          </div>
+
+          <div class="parampara-item">
+            <div class="parampara-number">23</div>
+            <div class="parampara-content">
+              <h3>Akshobhyaraghumanya Teertharu</h3>
+              <p>Maintained the Guru-Shishya parampara</p>
+            </div>
+          </div>
+
+          <div class="parampara-item current">
+            <div class="parampara-number">24</div>
+            <div class="parampara-content">
+              <h3>Raghubhooshana Teertharu</h3>
+              <p>Present Pontiff — Guiding the Balagaru Akshobhya Tirtha Mutt today, teaching Madhwa Siddhanta and serving the community</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Key Teachings Preserved</h2>
+          <div class="teachings-grid">
+            <div class="teaching-item">
+              <div class="teaching-icon">📿</div>
+              <h3>Tattvavada</h3>
+              <p>The philosophy of reality, emphasizing the eternal distinctions in creation.</p>
+            </div>
+            <div class="teaching-item">
+              <div class="teaching-icon">🕉</div>
+              <h3>Pancha Bheda</h3>
+              <p>The five fundamental distinctions between God, souls, and matter.</p>
+            </div>
+            <div class="teaching-item">
+              <div class="teaching-icon">📚</div>
+              <h3>Prasthana Trayi</h3>
+              <p>Commentaries on Upanishads, Bhagavad Gita, and Brahma Sutras.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru</p>
+        <p class="small-muted">Preserving tradition, serving community, spreading wisdom</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="small-muted">Phone: <span class="muted">+91‑XXXXXXXXXX</span></p>
+        <p class="small-muted">Email: <a href="mailto:contact@balagarumutt.org">contact@balagarumutt.org</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+          }, index * 50);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.parampara-item').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

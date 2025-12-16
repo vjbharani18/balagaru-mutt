@@ -7,47 +7,155 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="site">
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand">
-          <h1 class="mutt-name">Balagaru Mutt</h1>
-          <p class="mutt-loc">Teerthahalli</p>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="images/image.png" alt="Narasimha Logo" />
         </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html" class="nav-item">Home</a>
-          <a href="about.html" class="nav-item">About</a>
-          <a href="parampara.html" class="nav-item">Parampara</a>
-          <a href="news.html" class="nav-item">News</a>
-          <a href="gallery.html" class="nav-item">Gallery</a>
-          <a href="contact.html" class="nav-item">Contact</a>
-        </nav>
+        <div class="brand-text">
+          <div class="brand-main">BALAGARU MUTT</div>
+          <div class="brand-sub">Sri Arya Akshobya teertha moola Samsthanam</div>
+        </div>
       </div>
-    </header>
 
-    <main class="container content">
-      <h2>Contact</h2>
-      <p>Please reach out to the Mutt for enquiries regarding visits, rituals or seva:</p>
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" title="Toggle navigation">
+        <span class="hamburger"></span>
+      </label>
 
-      <address class="mutt-contact">
-        <strong>Balagaru Mutt</strong><br/>
-        Teerthahalli, Shimoga District<br/>
-        Karnataka, India<br/>
-        <!-- Replace with real phone/email when available -->
-        Phone: <span class="muted">+91-XXXXXXXXXX</span><br/>
-        Email: <span class="muted">contact@balagarumutt.org</span>
-      </address>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="parampara.html" class="nav-item">Parampara</a>
+        <a href="news.html" class="nav-item">News</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="contact.html" class="nav-item active">Contact</a>
+        <a href="admin/index.html" class="nav-item admin">Admin</a>
+      </nav>
+    </div>
+  </header>
 
-      <p class="muted">For administrative access to add news/images use <a href="admin/index.html">Admin</a>. Do not share Identity credentials publicly.</p>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli.</p>
+  <main>
+    <section class="page-header-section">
+      <div class="container">
+        <h1>Contact</h1>
+        <p class="page-subtitle">Reach out to the Mutt for enquiries, visits, or spiritual guidance</p>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <section class="main-content-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="content-card">
+            <h2>Contact Information</h2>
+            <address class="contact-address">
+              <strong>Balagaru Akshobhya Tirtha Mutt</strong><br/>
+              Baalagaru Village, Tirthahalli Taluk<br/>
+              Shimoga District, Karnataka, India<br/>
+              Pin Code: <strong>577432</strong><br/>
+              <br/>
+              <strong>Location Details:</strong><br/>
+              On the banks of river Tunga<br/>
+              4 KM from Tirthahalli<br/>
+              46 KM from Shivamogga (Shimoga)<br/>
+              307 KM from Bangalore<br/>
+              <br/>
+              Phone: <span class="muted">+91-XXXXXXXXXX</span><br/>
+              Email: <a href="mailto:contact@balagarumutt.org">contact@balagarumutt.org</a><br/>
+              <br/>
+              <span class="small-muted">Elevation: 667 meters above sea level</span>
+            </address>
+          </div>
+
+          <div class="content-card highlight-card">
+            <h2>Visiting the Mutt</h2>
+            <p>The Samsthanam welcomes visitors for:</p>
+            <ul class="visiting-list">
+              <li>Daily darshan and puja</li>
+              <li>Discourses on Madhwa Siddhanta</li>
+              <li>Vedic study programs</li>
+              <li>Participation in yagnas and festivals</li>
+              <li>Spiritual guidance and consultations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>About Madhwa Siddhanta</h2>
+          <p>For those interested in learning about Dvaita Vedanta, the Mutt offers regular classes and discourses. The philosophy emphasizes the eternal distinction between the Supreme Lord Vishnu and individual souls, and teaches that liberation is achieved through devotion (Bhakti) and knowledge (Jnana) of the Lord's true nature.</p>
+        </div>
+
+        <div class="content-card">
+          <h2>Location Map</h2>
+          <p style="margin-bottom: 1.5rem;">Find us on the banks of river Tunga in Baalagaru village, near Tirthahalli.</p>
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15505.5!2d75.2!3d13.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5c5c5c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2sBaalagaru%2C%20Tirthahalli%2C%20Karnataka%20577432!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="450" 
+              style="border:0; border-radius: 12px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Balagaru Akshobhya Tirtha Mutt Location">
+            </iframe>
+          </div>
+          <p class="small-muted" style="margin-top: 1rem; text-align: center;">
+            <a href="https://www.google.com/maps/search/Baalagaru+Village,+Tirthahalli,+Shimoga+District,+Karnataka" target="_blank" rel="noopener" style="color: var(--accent);">Open in Google Maps →</a>
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h2>How to Reach</h2>
+          <div class="location-info">
+            <div class="info-item">
+              <strong>By Road:</strong>
+              <p>The mutt is accessible by road from Tirthahalli (4 KM), Shivamogga (46 KM), or Bangalore (307 KM).</p>
+            </div>
+            <div class="info-item">
+              <strong>Nearby Areas:</strong>
+              <p>The mutt is located in the border region of Shimoga and Chikmagalur districts. Nearby villages include Melige, Melinakuruvalli, Bejjavalli, and Neraturu (all within 6 KM).</p>
+            </div>
+            <div class="info-item">
+              <strong>Nearby Cities:</strong>
+              <p>Shimoga, Sagar, Tarikere, Shikapur</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top: 2rem; text-align: center;">For administrative access to add news/images use <a href="admin/index.html">Admin</a>. Do not share Identity credentials publicly.</p>
+        <p class="small-muted" style="margin-top: 1rem; text-align: center;"><em>Location information sourced from <a href="https://madhwayati.blogspot.com/2019/06/a-17-balagaru-akshobhya-mutt-balaguru.html" target="_blank" rel="noopener">madhwayati.blogspot.com</a></em></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru</p>
+        <p class="small-muted">Preserving tradition, serving community, spreading wisdom</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="small-muted">Phone: <span class="muted">+91‑XXXXXXXXXX</span></p>
+        <p class="small-muted">Email: <a href="mailto:contact@balagarumutt.org">contact@balagarumutt.org</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.content-card').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
