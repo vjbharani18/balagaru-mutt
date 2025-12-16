@@ -7,47 +7,151 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="site">
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand">
-          <h1 class="mutt-name">Balagaru Mutt</h1>
-          <p class="mutt-loc">Teerthahalli</p>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="images/image.png" alt="Narasimha Logo" />
         </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html" class="nav-item">Home</a>
-          <a href="about.html" class="nav-item">About</a>
-          <a href="parampara.html" class="nav-item">Parampara</a>
-          <a href="news.html" class="nav-item">News</a>
-          <a href="gallery.html" class="nav-item">Gallery</a>
-          <a href="contact.html" class="nav-item">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="container content">
-      <h2>Gallery</h2>
-      <p class="muted">Images uploaded via the admin panel will appear here.</p>
-
-      <!-- Simple gallery grid that reads images from images/uploads
-           Note: a listing manifest is recommended for large galleries.
-           For this template we include a few placeholder entries. -->
-      <div class="gallery-grid" id="gallery-grid">
-        <!-- Placeholder cards / instructions -->
-        <div class="gallery-item placeholder">
-          <div class="placeholder-box">Upload images via Admin → Media</div>
+        <div class="brand-text">
+          <div class="brand-main">BALAGARU MUTT</div>
+          <div class="brand-sub">Sri Arya Akshobya teertha moola Samsthanam</div>
         </div>
       </div>
 
-    </main>
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" title="Toggle navigation">
+        <span class="hamburger"></span>
+      </label>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli.</p>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="parampara.html" class="nav-item">Parampara</a>
+        <a href="news.html" class="nav-item">News</a>
+        <a href="gallery.html" class="nav-item active">Gallery</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="admin/index.html" class="nav-item admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header-section">
+      <div class="container">
+        <h1>Gallery</h1>
+        <p class="page-subtitle">A glimpse into the spiritual life and activities of the Samsthanam</p>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <section class="main-content-section">
+      <div class="container">
+        <div class="gallery-grid">
+          <div class="gallery-card">
+            <div class="gallery-image">
+              <img src="images/Screenshot 2025-12-16 113354.png" alt="Temple Sanctum" />
+            </div>
+            <div class="gallery-content">
+              <h3>Temple Sanctum</h3>
+              <p>The sacred sanctum houses the main deities including Sri Madhwacharyara kararchita Sri Rama Devaru, Sri Lakshmi Narasimha Devaru, and the rare Vishwambhara Saligrama.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-image">
+              <img src="images/Screenshot 2025-12-16 113815.png" alt="Mutt Premises" />
+            </div>
+            <div class="gallery-content">
+              <h3>Mutt Premises</h3>
+              <p>The mutt premises include the main hall, meditation areas, and the sacred Vrundavanas of the previous Acharyas. The architecture reflects traditional Dravidian style.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-image">
+              <img src="images/image.png" alt="Narasimha Deity" />
+            </div>
+            <div class="gallery-content">
+              <h3>Narasimha Deity</h3>
+              <p>The sacred Narasimha deity worshipped in the mutt, established by Sri Akshobya Teertharu. This deity is central to the spiritual practices of the Samsthanam.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-image placeholder">
+              <div class="placeholder-content">
+                <div class="placeholder-icon">🕯️</div>
+                <div>Puja Ceremony</div>
+              </div>
+            </div>
+            <div class="gallery-content">
+              <h3>Daily Puja</h3>
+              <p>Regular worship ceremonies with traditional rituals, mantras, and offerings. The mutt conducts daily puja following Madhwa Siddhanta traditions.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-image placeholder">
+              <div class="placeholder-content">
+                <div class="placeholder-icon">📿</div>
+                <div>Vedic Study</div>
+              </div>
+            </div>
+            <div class="gallery-content">
+              <h3>Vedic Studies</h3>
+              <p>Traditional study of Vedas, Upanishads, and Madhwa Siddhanta texts under the guidance of learned Acharyas. Students learn the sacred scriptures and philosophy.</p>
+            </div>
+          </div>
+
+          <div class="gallery-card">
+            <div class="gallery-image placeholder">
+              <div class="placeholder-content">
+                <div class="placeholder-icon">🔥</div>
+                <div>Yagna Ceremony</div>
+              </div>
+            </div>
+            <div class="gallery-content">
+              <h3>Yagna Ceremonies</h3>
+              <p>Regular yagnas and special ceremonies during festivals, following traditional Madhwa Siddhanta practices. These ceremonies bring the community together in devotion.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card" style="margin-top: 3rem; text-align: center;">
+          <p class="muted"><strong>Note:</strong> More images can be uploaded via the admin panel. Replace placeholder images with actual photos of temple activities, ceremonies, and mutt premises.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru</p>
+        <p class="small-muted">Preserving tradition, serving community, spreading wisdom</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="small-muted">Phone: <span class="muted">+91‑XXXXXXXXXX</span></p>
+        <p class="small-muted">Email: <a href="mailto:contact@balagarumutt.org">contact@balagarumutt.org</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.gallery-card').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

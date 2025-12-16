@@ -7,63 +7,84 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="site">
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="brand">
-          <h1 class="mutt-name">Balagaru Mutt</h1>
-          <p class="mutt-loc">Teerthahalli</p>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="images/image.png" alt="Narasimha Logo" />
         </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="index.html" class="nav-item">Home</a>
-          <a href="about.html" class="nav-item">About</a>
-          <a href="parampara.html" class="nav-item">Parampara</a>
-          <a href="news.html" class="nav-item">News</a>
-          <a href="gallery.html" class="nav-item">Gallery</a>
-          <a href="contact.html" class="nav-item">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="container content">
-      <h2>News & Events</h2>
-
-      <div id="news-container">
-        <p class="muted">Loading news…</p>
+        <div class="brand-text">
+          <div class="brand-main">BALAGARU MUTT</div>
+          <div class="brand-sub">Sri Arya Akshobya teertha moola Samsthanam</div>
+        </div>
       </div>
 
-      <hr/>
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" title="Toggle navigation">
+        <span class="hamburger"></span>
+      </label>
 
-      <!-- Article view area for selected article -->
-      <article id="article-view" class="article-view" hidden>
-        <a id="back-to-list" href="news.html">&larr; Back to list</a>
-        <h3 id="article-title"></h3>
-        <div id="article-date" class="news-date"></div>
-        <div id="article-body" class="article-body"></div>
-      </article>
-    </main>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="parampara.html" class="nav-item">Parampara</a>
+        <a href="news.html" class="nav-item active">News</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="admin/index.html" class="nav-item admin">Admin</a>
+      </nav>
+    </div>
+  </header>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>© <span id="year"></span> Balagaru Mutt, Teerthahalli.</p>
+  <main>
+    <section class="page-header-section">
+      <div class="container">
+        <h1>News & Events</h1>
+        <p class="page-subtitle">Stay updated with the latest activities and events at the Samsthanam</p>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <!-- We use a small, well-known markdown renderer via CDN for clarity -->
+    <section class="main-content-section">
+      <div class="container">
+        <div id="news-container">
+          <p class="muted">Loading news…</p>
+        </div>
+
+        <article id="article-view" class="article-view" hidden>
+          <a id="back-to-list" href="news.html" class="back-link">← Back to list</a>
+          <div class="content-card">
+            <h2 id="article-title"></h2>
+            <div id="article-date" class="news-date"></div>
+            <div id="article-body" class="article-body"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru</p>
+        <p class="small-muted">Preserving tradition, serving community, spreading wisdom</p>
+      </div>
+      <div class="footer-contacts">
+        <p class="small-muted">Phone: <span class="muted">+91‑XXXXXXXXXX</span></p>
+        <p class="small-muted">Email: <a href="mailto:contact@balagarumutt.org">contact@balagarumutt.org</a></p>
+      </div>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple helper to format date
     function formatDate(d) {
       try {
         return new Date(d).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
       } catch (e) { return d; }
     }
 
-    // Load list index and render list
     function loadNewsList() {
       fetch('/content/news/index.json')
         .then(function (r) {
@@ -79,9 +100,12 @@
 
           var container = document.getElementById('news-container');
           container.innerHTML = '';
+          var grid = document.createElement('div');
+          grid.className = 'news-grid';
+          
           data.forEach(function (item) {
-            var article = document.createElement('article');
-            article.className = 'news-list-item';
+            var card = document.createElement('article');
+            card.className = 'news-card';
             var title = document.createElement('h4');
             var link = document.createElement('a');
             link.href = 'news.html?file=' + encodeURIComponent(item.file);
@@ -92,18 +116,19 @@
             date.textContent = formatDate(item.date);
             var excerpt = document.createElement('p');
             excerpt.textContent = item.excerpt || '';
-            article.appendChild(title);
-            article.appendChild(date);
-            article.appendChild(excerpt);
-            container.appendChild(article);
+            card.appendChild(title);
+            card.appendChild(date);
+            card.appendChild(excerpt);
+            grid.appendChild(card);
           });
+          
+          container.appendChild(grid);
         })
         .catch(function () {
           document.getElementById('news-container').innerHTML = '<p class="muted">No news index found. Use the admin at /admin to add news.</p>';
         });
     }
 
-    // Load full markdown file and render
     function loadArticle(file) {
       var articleView = document.getElementById('article-view');
       var container = document.getElementById('article-body');
@@ -113,7 +138,6 @@
           return r.text();
         })
         .then(function (txt) {
-          // Attempt to strip frontmatter (--- YAML ---) and parse it
           var body = txt;
           var front = {};
           if (txt.startsWith('---')) {
@@ -121,29 +145,24 @@
             if (end !== -1) {
               var fm = txt.substring(3, end).trim();
               body = txt.substring(end + 3).trim();
-              // Very small YAML parser for known fields (title/date)
               fm.split('\n').forEach(function (line) {
                 var idx = line.indexOf(':');
                 if (idx > -1) {
                   var k = line.substring(0, idx).trim();
                   var v = line.substring(idx + 1).trim();
-                  // remove surrounding quotes if any
                   v = v.replace(/^["']|["']$/g, '');
                   front[k] = v;
                 }
               });
             }
           }
-          // Show header from frontmatter if present
           var title = front.title || 'Article';
           var date = front.date || '';
           document.getElementById('article-title').textContent = title;
-          document.getElementById('article-date').textContent = date ? new Date(date).toLocaleDateString() : '';
-          // Render markdown body to HTML using marked
+          document.getElementById('article-date').textContent = date ? formatDate(date) : '';
           container.innerHTML = marked.parse(body);
           document.getElementById('news-container').hidden = true;
           articleView.hidden = false;
-          // Scroll to article
           articleView.scrollIntoView({ behavior: 'smooth' });
         })
         .catch(function () {
@@ -152,7 +171,6 @@
         });
     }
 
-    // On page load: if query ?file=..., show article; otherwise list
     (function init() {
       var params = new URLSearchParams(window.location.search);
       var file = params.get('file');
@@ -161,7 +179,6 @@
       } else {
         loadNewsList();
       }
-      // Back to list link handler
       var back = document.getElementById('back-to-list');
       if (back) {
         back.addEventListener('click', function (e) {

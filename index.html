@@ -9,31 +9,26 @@
 </head>
 <body>
 
-  <!-- Top saffron strip (inspired by Siddhagiri) -->
-  <div class="top-strip" aria-hidden="true"></div>
-
-  <!-- Header with CSS-only hamburger menu: checkbox + label (no JavaScript) -->
+  <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <div class="brand">
-        <div class="crest" aria-hidden="true"></div>
-        <div>
-          <!-- Full official name kept in header; hero will use a shorter title -->
-          <div class="brand-line">Sri Arya Akshobya</div>
-          <div class="brand-name">teertha moola Samsthanam Balagaru</div>
-          <div class="mutt-loc">Teerthahalli, Karnataka</div>
+        <div class="logo-icon">
+          <img src="images/image.png" alt="Narasimha Logo" />
+        </div>
+        <div class="brand-text">
+          <div class="brand-main">BALAGARU MUTT</div>
+          <div class="brand-sub">Sri Arya Akshobya teertha moola Samsthanam</div>
         </div>
       </div>
 
-      <!-- Nav toggle (checkbox) for mobile -->
       <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true" />
       <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true" title="Toggle navigation">
         <span class="hamburger"></span>
       </label>
 
-      <!-- Navigation: shown/hidden on mobile via the checkbox above -->
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="index.html" class="nav-item">Home</a>
+        <a href="index.html" class="nav-item active">Home</a>
         <a href="about.html" class="nav-item">About</a>
         <a href="parampara.html" class="nav-item">Parampara</a>
         <a href="news.html" class="nav-item">News</a>
@@ -44,57 +39,138 @@
     </div>
   </header>
 
-  <!-- HERO: shorter, non-redundant title; overlay is unobtrusive -->
-  <section class="hero-image" role="region" aria-label="Hero">
-    <div class="hero-overlay">
-      <!-- Shorter hero title to avoid repetition -->
-      <h1 class="hero-title">Sri Arya Akshobya Samsthanam</h1>
-      <h2 class="hero-subtitle">Teerthahalli</h2>
-      <p class="hero-tagline">Preserving Dharma • Sampradaya • Seva</p>
+  <!-- Hero Section with Image -->
+  <section class="hero-section">
+    <div class="hero-image-container">
+      <img src="images/Screenshot 2025-12-16 113354.png" alt="Balagaru Mutt" class="hero-image" />
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="hero-title">Sri Arya Akshobya teertha moola Samsthanam</h1>
+          <p class="hero-subtitle">Balagaru, Tirthahalli • On the banks of Tunga</p>
+          <p class="hero-description">Preserving Dharma • Sampradaya • Seva</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <main>
-    <section class="intro container">
-      <div class="intro-grid">
-        <div class="intro-text card">
-          <h2>Welcome</h2>
-          <p>Sri Arya Akshobya teertha moola Samsthanam Balagaru sits quietly in the nest of nature near the Tungabhadra. We maintain the Guru–Shishya parampara, offer Vedic study and serve the surrounding communities through seva and education.</p>
-          <p><a href="about.html" class="read-more">Learn more about the Samsthanam →</a></p>
+    <!-- Main Content Section -->
+    <section class="main-content-section">
+      <div class="container content-grid">
+        <div class="content-main">
+          <div class="content-card">
+            <h2>About the Samsthanam</h2>
+            <p>Sri Arya Akshobya teertha moola Samsthanam Balagaru (Balagaru Akshobhya Tirtha Mutt) sits quietly on the banks of the sacred <strong>river Tunga</strong> in Baalagaru village, near Tirthahalli. We maintain the Guru–Shishya parampara, offer Vedic study and serve the surrounding communities through seva and education.</p>
+            <p>This mutt is the <strong>Moola Mutt (root mutt) of Kangu Mutt</strong>. Following the <strong>Madhwa Siddhanta</strong> (Dvaita Vedanta) tradition established by Sri Madhvacharya, our Samsthanam upholds the philosophy of <em>Bheda</em> (difference) between the Supreme Lord Vishnu, individual souls (Jivas), and matter (Jada).</p>
+            <a href="about.html" class="read-more-btn">Learn More →</a>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon">📿</div>
+              <h3>Vedic Studies</h3>
+              <p>Traditional study of Vedas, Upanishads, and Madhwa Siddhanta texts under the guidance of learned Acharyas.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🕯️</div>
+              <h3>Daily Puja</h3>
+              <p>Regular worship of Lord Vishnu and Narasimha with traditional rituals, mantras, and offerings.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">📚</div>
+              <h3>Philosophy</h3>
+              <p>Teaching the five fundamental differences (Pancha Bheda) of Dvaita Vedanta as expounded by Sri Madhvacharya.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🤝</div>
+              <h3>Community Seva</h3>
+              <p>Serving the local community through education, healthcare, and spiritual guidance following the principles of Dharma.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="intro-quick card">
-          <h3>Quick Info</h3>
-          <ul>
-            <li><strong>Location:</strong> Teerthahalli, Shimoga</li>
-            <li><strong>Services:</strong> Vedic study, bhajans, yagnas</li>
-            <li><strong>Contact:</strong> contact@balagarumutt.org</li>
-          </ul>
+        <aside class="content-sidebar">
+          <div class="sidebar-card">
+            <h3>Quick Information</h3>
+            <div class="info-item">
+              <strong>Location:</strong>
+              <p>Baalagaru, Tirthahalli, Shimoga District, Karnataka</p>
+            </div>
+            <div class="info-item">
+              <strong>River:</strong>
+              <p>On the banks of Tunga river</p>
+            </div>
+            <div class="info-item">
+              <strong>Pin Code:</strong>
+              <p>577432</p>
+            </div>
+            <div class="info-item">
+              <strong>Distance:</strong>
+              <p>4 KM from Tirthahalli<br>46 KM from Shivamogga</p>
+            </div>
+          </div>
+
+          <div class="sidebar-card highlight">
+            <h3>Guru Parampara</h3>
+            <p>Our Parampara traces the succession of Acharyas who preserved the teachings of <strong>Madhwa Siddhanta</strong>. The lineage follows the tradition from Sri Madhvacharya (1238-1317 CE), who established Dvaita Vedanta.</p>
+            <a href="parampara.html" class="read-more-btn">View Parampara →</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Nearby Attractions / Gallery Section -->
+    <section class="attractions-section">
+      <div class="attractions-header">
+        <h2>Sacred Spaces & Activities</h2>
+        <p>Explore the spiritual heritage and activities of the Samsthanam</p>
+      </div>
+      <div class="attractions-grid">
+        <div class="attraction-card">
+          <div class="attraction-image">
+            <img src="images/Screenshot 2025-12-16 113815.png" alt="Temple Sanctum" />
+          </div>
+          <div class="attraction-content">
+            <h3>Temple Sanctum</h3>
+            <p>The sacred sanctum houses the main deities including Sri Madhwacharyara kararchita Sri Rama Devaru (Vaikunta Rama, Seetha & Lakshmana), Sri Lakshmi Narasimha Devaru, and the rare Vishwambhara Saligrama.</p>
+          </div>
+        </div>
+        <div class="attraction-card">
+          <div class="attraction-image">
+            <img src="images/Screenshot 2025-12-16 113354.png" alt="Mutt Premises" />
+          </div>
+          <div class="attraction-content">
+            <h3>Mutt Premises</h3>
+            <p>The mutt premises include the main hall, meditation areas, and the sacred Vrundavanas of the previous Acharyas. The architecture reflects traditional Dravidian style with modern amenities.</p>
+          </div>
+        </div>
+        <div class="attraction-card">
+          <div class="attraction-image">
+            <img src="images/image.png" alt="Narasimha Deity" />
+          </div>
+          <div class="attraction-content">
+            <h3>Daily Rituals</h3>
+            <p>Experience the daily puja ceremonies, bhajans, and Vedic recitations. The mutt conducts regular yagnas and special ceremonies during festivals, following traditional Madhwa Siddhanta practices.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="summary container">
-      <h3>Guru Parampara</h3>
-      <p>Our Parampara traces the succession of Acharyas who preserved the teachings. The current Peetadhipati continues the lineage with humility and devotion.</p>
-      <p><a href="parampara.html" class="read-more">See the Parampara →</a></p>
-    </section>
-
-    <section class="latest-news container" id="latest-news">
-      <h3>Latest News & Events</h3>
+    <!-- News Section -->
+    <section class="news-section container">
+      <h2>Latest News & Events</h2>
       <div id="news-list">
         <p class="muted">Loading recent news…</p>
       </div>
-      <p><a href="news.html" class="read-more">All news & events →</a></p>
+      <a href="news.html" class="read-more-btn">View All News →</a>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <div>
-        <!-- Footer kept concise to avoid repeating hero/header -->
         <p>© <span id="year"></span> Sri Arya Akshobya teertha moola Samsthanam Balagaru</p>
-        <p class="small-muted">A respectful, traditional presentation inspired by Indian mutt designs.</p>
+        <p class="small-muted">Preserving tradition, serving community, spreading wisdom</p>
       </div>
       <div class="footer-contacts">
         <p class="small-muted">Phone: <span class="muted">+91‑XXXXXXXXXX</span></p>
@@ -104,8 +180,26 @@
   </footer>
 
   <script>
-    // Only small behavior: set year and load news manifest (unchanged)
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.content-card, .feature-item, .attraction-card, .sidebar-card').forEach(el => {
+      observer.observe(el);
+    });
 
     function formatDate(iso) {
       try { return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
@@ -120,16 +214,27 @@
           document.getElementById('news-list').innerHTML = '<p class="muted">No news available.</p>'; return;
         }
         data.sort(function (a,b){return new Date(b.date)-new Date(a.date);});
-        const latest = data.slice(0,4);
-        const list = document.createElement('div'); list.className='news-grid';
+        const latest = data.slice(0,3);
+        const list = document.createElement('div'); 
+        list.className='news-grid';
         latest.forEach(function (item){
-          const card = document.createElement('article'); card.className='news-card card';
-          const title = document.createElement('h4'); title.innerHTML = '<a href="news.html?file='+encodeURIComponent(item.file)+'">'+item.title+'</a>';
-          const date = document.createElement('div'); date.className='news-date'; date.textContent = formatDate(item.date);
-          const excerpt = document.createElement('p'); excerpt.textContent = item.excerpt || '';
-          card.appendChild(title); card.appendChild(date); card.appendChild(excerpt); list.appendChild(card);
+          const card = document.createElement('article'); 
+          card.className='news-card';
+          const title = document.createElement('h4'); 
+          title.innerHTML = '<a href="news.html?file='+encodeURIComponent(item.file)+'">'+item.title+'</a>';
+          const date = document.createElement('div'); 
+          date.className='news-date'; 
+          date.textContent = formatDate(item.date);
+          const excerpt = document.createElement('p'); 
+          excerpt.textContent = item.excerpt || '';
+          card.appendChild(title); 
+          card.appendChild(date); 
+          card.appendChild(excerpt); 
+          list.appendChild(card);
         });
-        const container = document.getElementById('news-list'); container.innerHTML=''; container.appendChild(list);
+        const container = document.getElementById('news-list'); 
+        container.innerHTML=''; 
+        container.appendChild(list);
       }).catch(function () {
         document.getElementById('news-list').innerHTML = '<p class="muted">No news available. Use the admin panel to add news.</p>';
       });

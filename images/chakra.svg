@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Sudarshana Chakra - Circular with Spokes -->
+  <g stroke="#8b3a2e" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <!-- Outer circle -->
+    <circle cx="100" cy="100" r="85" />
+    
+    <!-- Inner circle -->
+    <circle cx="100" cy="100" r="50" />
+    
+    <!-- Center circle -->
+    <circle cx="100" cy="100" r="15" fill="#8b3a2e" />
+    
+    <!-- Spokes (24 spokes for completeness) -->
+    <g stroke-width="2">
+      <line x1="100" y1="15" x2="100" y2="50" />
+      <line x1="100" y1="150" x2="100" y2="185" />
+      <line x1="15" y1="100" x2="50" y2="100" />
+      <line x1="150" y1="100" x2="185" y2="100" />
+      
+      <!-- Diagonal spokes -->
+      <line x1="141.4" y1="58.6" x2="125" y2="75" />
+      <line x1="58.6" y1="141.4" x2="75" y2="125" />
+      <line x1="58.6" y1="58.6" x2="75" y2="75" />
+      <line x1="141.4" y1="141.4" x2="125" y2="125" />
+      
+      <!-- Additional spokes for detail -->
+      <line x1="170" y1="70" x2="155" y2="85" />
+      <line x1="30" y1="130" x2="45" y2="115" />
+      <line x1="30" y1="70" x2="45" y2="85" />
+      <line x1="170" y1="130" x2="155" y2="115" />
+    </g>
+    
+    <!-- Decorative dots on outer ring -->
+    <circle cx="100" cy="15" r="3" fill="#8b3a2e" />
+    <circle cx="100" cy="185" r="3" fill="#8b3a2e" />
+    <circle cx="15" cy="100" r="3" fill="#8b3a2e" />
+    <circle cx="185" cy="100" r="3" fill="#8b3a2e" />
+  </g>
+</svg>
+
